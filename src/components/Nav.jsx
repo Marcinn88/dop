@@ -9,7 +9,7 @@ export const Nav = ({ selected, token }) => {
           <>
             <div className={styles.helloNav}>
               <p>
-                Zalogowany: <strong>Admin</strong>
+                Zalogowany: <strong>{import.meta.env.VITE_ADMIN_NAME}</strong>
               </p>
             </div>
           </>

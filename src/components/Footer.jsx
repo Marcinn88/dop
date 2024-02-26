@@ -1,6 +1,6 @@
-import styles from './Footer.module.css';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const Footer = ({ token }) => {
   const [loginModal, setloginModal] = useState(false);
@@ -11,28 +11,31 @@ export const Footer = ({ token }) => {
   const openLoginModal = () => {
     setloginModal(true);
     setLoginData({
-      login: '',
-      password: '',
+      login: "",
+      password: "",
     });
-    console.log('ModalLogin Opened');
+    console.log("ModalLogin Opened");
   };
   const closeLoginModal = () => {
     setloginModal(false);
-    console.log('Modal Closed');
+    console.log("Modal Closed");
   };
 
   const adminLogin = () => {
-    if (loginData.login === 'admin' && loginData.password === '123') {
-      console.log('loginData', loginData);
+    if (
+      loginData.login === import.meta.env.VITE_ADMIN_LOGIN &&
+      loginData.password === import.meta.env.VITE_ADMIN_PASS
+    ) {
+      console.log("loginData", loginData);
       setloginModal(false);
-      localStorage.setItem('token', JSON.stringify({ token: 'admin' }));
+      localStorage.setItem("token", JSON.stringify({ token: "admin" }));
       ref();
     } else {
-      alert('Zle haslo');
+      alert("Zle haslo");
     }
   };
   const errorMsg = () => {
-    alert('Jesteś zalogowany');
+    alert("Jesteś zalogowany");
   };
 
   return (
@@ -50,7 +53,7 @@ export const Footer = ({ token }) => {
               type="text"
               className={styles.loginTextBox}
               placeholder="login"
-              onChange={e => {
+              onChange={(e) => {
                 setLoginData({ ...loginData, login: e.target.value });
               }}
             />
@@ -58,7 +61,7 @@ export const Footer = ({ token }) => {
               type="password"
               className={styles.loginTextBox}
               placeholder="hasło"
-              onChange={e => {
+              onChange={(e) => {
                 setLoginData({ ...loginData, password: e.target.value });
               }}
             />
@@ -99,7 +102,7 @@ export const Footer = ({ token }) => {
           <div className={styles.footer_list_container}>
             <p className={styles.footer_link_admin}>Admin Tools</p>
             <i
-              onClick={token === '' ? openLoginModal : errorMsg}
+              onClick={token === "" ? openLoginModal : errorMsg}
               className={styles.demoIconDesktop}
             >
               &#xf108;

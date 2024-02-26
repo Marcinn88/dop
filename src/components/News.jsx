@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import styles from './News.module.css';
-import { nanoid } from 'nanoid';
-import leftImage from '../images/left-img.jpg';
-import rightImage from '../images/right-img.jpg';
-import { getDay, getMonth, getDefYear } from '../services/DateFunctions';
-import { addArticle, deleteArticle, editArticle } from '../services/operations';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import styles from "./News.module.css";
+import { nanoid } from "nanoid";
+import leftImage from "../images/left-img.jpg";
+import rightImage from "../images/right-img.jpg";
+import { getDay, getMonth, getDefYear } from "../services/DateFunctions";
+import { addArticle, deleteArticle, editArticle } from "../services/operations";
 
-const mockApi = 'https://65b15d5ed16d31d11bdec7f4.mockapi.io';
+const mockApi = "https://65b15d5ed16d31d11bdec7f4.mockapi.io";
 
 // zmiana
 export const News = ({ token }) => {
@@ -16,7 +16,7 @@ export const News = ({ token }) => {
   const [post, setPost] = useState({});
   const [count, setCount] = useState(true);
   const [data, setData] = useState([]);
-  const [editedId, setEditedId] = useState('');
+  const [editedId, setEditedId] = useState("");
   const [uploadModal, setUploadModal] = useState(false);
   const [apiFiles, setApiFiles] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
@@ -29,7 +29,7 @@ export const News = ({ token }) => {
     try {
       const response = await axios.get(`${mockApi}/articles`);
       setData(response.data);
-      console.log('lodaing data....');
+      console.log("lodaing data....");
       return response.data;
     } catch (error) {
       return console.error(error.message);
@@ -38,12 +38,12 @@ export const News = ({ token }) => {
 
   const uploadPhoto = () => {
     const formData = new FormData();
-    formData.append('file', apiFiles);
-    formData.append('upload_preset', 'dop-bike');
-    console.log('formData', formData);
+    formData.append("file", apiFiles);
+    formData.append("upload_preset", "dop-bike");
+    console.log("formData", formData);
     axios
-      .post('https://api.cloudinary.com/v1_1/djwth1q7u/image/upload', formData)
-      .then(response => {
+      .post("https://api.cloudinary.com/v1_1/djwth1q7u/image/upload", formData)
+      .then((response) => {
         console.log(response);
         console.log(response.data.secure_url);
         setPost({ ...post, photo: response.data.secure_url });
@@ -58,17 +58,17 @@ export const News = ({ token }) => {
   const openModal = () => {
     setPost({
       _id: nanoid(),
-      title: '',
+      title: "",
       date_day: getDay(),
       date_month: getMonth(),
       date_year: getDefYear(),
-      photo_position: 'right',
+      photo_position: "right",
       photo:
-        'https://res.cloudinary.com/djwth1q7u/image/upload/v1708351807/default.jpg',
-      text1: '',
-      text2: '',
-      text3: '',
-      favorite: 'false',
+        "https://res.cloudinary.com/djwth1q7u/image/upload/v1708351807/default.jpg",
+      text1: "",
+      text2: "",
+      text3: "",
+      favorite: "false",
     });
     setEditModal(false);
     setModal(true);
@@ -79,20 +79,20 @@ export const News = ({ token }) => {
     setModal(false);
   };
 
-  const toogleUploadModal = e => {
+  const toogleUploadModal = (e) => {
     e.preventDefault();
     setUploadModal(!uploadModal);
   };
 
-  const handleSlider = e => setCount(!count);
+  const handleSlider = (e) => setCount(!count);
 
   const sliderTypeLeft = () => {
-    setPost({ ...post, photo_position: 'left' });
+    setPost({ ...post, photo_position: "left" });
   };
   const sliderTypeRight = () => {
-    setPost({ ...post, photo_position: 'right' });
+    setPost({ ...post, photo_position: "right" });
   };
-  const dateTrim = e => {
+  const dateTrim = (e) => {
     const selectedData = e.target.value.toString();
     const day = selectedData.substr(8, 2);
     const month = selectedData.substr(5, 2);
@@ -101,7 +101,7 @@ export const News = ({ token }) => {
     console.log(post);
   };
 
-  const submitModal = async e => {
+  const submitModal = async (e) => {
     e.preventDefault();
     await addArticle(post);
     setModal(!modal);
@@ -124,16 +124,16 @@ export const News = ({ token }) => {
     ref();
   };
 
-  const articleDelete = async index => {
+  const articleDelete = async (index) => {
     await deleteArticle(index);
     ref();
     // const newData = data.filter(e => e.id !== index);
     // setData(newData);
   };
 
-  const articleEdit = index => {
+  const articleEdit = (index) => {
     setEditedId(index);
-    const newData = data.filter(e => e.id === index);
+    const newData = data.filter((e) => e.id === index);
     setPost({
       ...post,
       _id: newData[0]._id,
@@ -153,7 +153,7 @@ export const News = ({ token }) => {
     console.log(post);
   };
 
-  const submitEditedModal = async e => {
+  const submitEditedModal = async (e) => {
     e.preventDefault();
     setModal(!modal);
     await editArticle(post, editedId);
@@ -161,13 +161,13 @@ export const News = ({ token }) => {
   };
 
   const logOut = () => {
-    localStorage.setItem('token', JSON.stringify({ token: '' }));
+    localStorage.setItem("token", JSON.stringify({ token: "" }));
     setLoggedIn(!loggedIn);
     ref();
-    console.log('Wylogowano');
+    console.log("Wylogowano");
   };
   const openNewsLetter = () => {
-    console.log('newsletter wyslany');
+    console.log("newsletter wyslany");
   };
 
   return (
@@ -182,7 +182,7 @@ export const News = ({ token }) => {
             <input
               type="file"
               accept="image/*;capture=camera"
-              onChange={e => {
+              onChange={(e) => {
                 setApiFiles(e.target.files[0]);
                 console.log(apiFiles);
               }}
@@ -198,7 +198,7 @@ export const News = ({ token }) => {
         </>
       )}
 
-      {token === 'admin' ? (
+      {token === "admin" ? (
         <div className={styles.newsAdminPanel}>
           <button onClick={openModal} className={styles.addNewsBtn}>
             +
@@ -242,7 +242,7 @@ export const News = ({ token }) => {
                   name="title"
                   maxLength="50"
                   placeholder="Wpisz tytuł"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, title: e.target.value });
                   }}
                   required
@@ -255,7 +255,7 @@ export const News = ({ token }) => {
                   maxLength="50"
                   value={post.title}
                   placeholder="Wpisz tytuł"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, title: e.target.value });
                   }}
                   required
@@ -273,7 +273,7 @@ export const News = ({ token }) => {
                     type="checkbox"
                     className={styles.checkbox}
                     name="slider"
-                    value={!count ? 'Right' : 'Left'}
+                    value={!count ? "Right" : "Left"}
                     onChange={!count ? sliderTypeRight : sliderTypeLeft}
                     onClick={handleSlider}
                   />
@@ -342,7 +342,7 @@ export const News = ({ token }) => {
                   maxLength="500"
                   name="paragraf"
                   placeholder="Wpisz zawartość pierwszego Paragrafu"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, text1: e.target.value });
                   }}
                   className={styles.modalParagraf}
@@ -355,7 +355,7 @@ export const News = ({ token }) => {
                   name="paragraf"
                   value={post.text1}
                   placeholder="Wpisz zawartość pierwszego Paragrafu"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, text1: e.target.value });
                   }}
                   className={styles.modalParagraf}
@@ -368,7 +368,7 @@ export const News = ({ token }) => {
                   maxLength="500"
                   name="paragraf"
                   placeholder="Wpisz zawartość drugiego Paragrafu (opcjonalnie)"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, text2: e.target.value });
                   }}
                   className={styles.modalParagraf}
@@ -380,7 +380,7 @@ export const News = ({ token }) => {
                   name="paragraf"
                   value={post.text2}
                   placeholder="Wpisz zawartość drugiego Paragrafu (opcjonalnie)"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, text2: e.target.value });
                   }}
                   className={styles.modalParagraf}
@@ -392,7 +392,7 @@ export const News = ({ token }) => {
                   maxLength="500"
                   name="paragraf"
                   placeholder="Wpisz zawartość trzeciego Paragrafu (opcjonalnie)"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, text3: e.target.value });
                   }}
                   className={styles.modalParagraf}
@@ -404,7 +404,7 @@ export const News = ({ token }) => {
                   name="paragraf"
                   value={post.text3}
                   placeholder="Wpisz zawartość trzeciego Paragrafu (opcjonalnie)"
-                  onChange={e => {
+                  onChange={(e) => {
                     setPost({ ...post, text3: e.target.value });
                   }}
                   className={styles.modalParagraf}
@@ -456,7 +456,7 @@ export const News = ({ token }) => {
                 >
                   <div className={styles.newsTtleContainer}>
                     <p className={styles.newsSubTitle}>{title}</p>
-                    {token === 'admin' ? (
+                    {token === "admin" ? (
                       <button
                         className={styles.newsBtn}
                         id={id}
@@ -467,7 +467,7 @@ export const News = ({ token }) => {
                     ) : (
                       <></>
                     )}
-                    {token === 'admin' ? (
+                    {token === "admin" ? (
                       <button
                         className={styles.newsBtn}
                         id={id}
@@ -483,7 +483,7 @@ export const News = ({ token }) => {
                     {date_day}.{date_month}.{date_year}
                   </p>
                   <div className={styles.newsContainer}>
-                    {photo_position === 'left' ? (
+                    {photo_position === "left" ? (
                       <>
                         <div className={styles.newsImg}>
                           <img src={photo} alt="bike" />
@@ -503,8 +503,6 @@ export const News = ({ token }) => {
                         </div>
                         <div className={styles.newsImg}>
                           <img src={photo} alt="bike" />
-
-                          {/* <img src={require(`../images/${photo}`)} alt="bike" /> */}
                         </div>
                       </>
                     )}

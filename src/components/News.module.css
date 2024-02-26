@@ -216,9 +216,19 @@
     margin: 0 20px 0 20px;
     
 }
+/* -- Kontener na pojedynczy News. -- */
+@media (prefers-reduced-motion: no-preference) {
 .newsElement{
     padding: 20px;
+    scale: .8; opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry;
 }
+@keyframes fade-in {
+  to {scale: 1; opacity: 1;}
+}}
+
 .newsTtleContainer{
   display: flex;
   gap: 25px;
