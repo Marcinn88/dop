@@ -1,5 +1,4 @@
 
-/* Nawigacja */
 .mainNav{
     background-color: rgb(0, 0, 0, 0.5);
     height: 50px;
@@ -8,24 +7,86 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    transition: all 0.5s;
+}
+.mobileMenuShadowBox{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.479);
+    opacity: 1;
+    transition: all 0.5s;
+    z-index: 2;
+}
+.mobileMenuShadowBoxOff{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: all 0.5s;
+    pointer-events: none;
+}
+.navMobileBtn{
+    position: absolute;
+    /* background-color: blue; */
+    color:white;
+    stroke: white;
+    top:0;
+    right:50px;
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+    transition: all 0.5s;
+}
+.mainNavListMobile{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    list-style: none;
+}
+.mainNavWrapperMenuMobileOff{
+    position: absolute;
+    right:0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 200px;
+    height: 200px;
+    top:-500px;
+    transition: all 0.5s;
+    opacity: 0;
+    z-index: -1;
+}
+.mainNavWrapperMenuMobile{
+    position: absolute;
+    top:50px;
+    right:0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 200px;
+    height: auto;
+    transition: all 0.5s;
+    opacity: 1;
+    z-index: 3;
+}
+.navMobileBtnIco{
+    width: 50px;
 }
 .helloNav{
     color: white;
     position: absolute;
     left: 10px;
-    
 }
 /* Nawigacja-Lista */
 .mainNavList{
-    display: flex;
-    gap:50px;
-    list-style: none;
-    width:80%;
-    justify-content: center;
-    
+    display: none;
 }
 /* Element nawigacji */
-
+.mainNavEl{
+    border-bottom: 1px solid rgb(41, 41, 41);
+}
+.mainNavEl:last-child{
+    border:none;
+}
 .mainNavList a{
     text-decoration: none;
 }
@@ -38,7 +99,7 @@
 }
 .mainNavElTextSelected{
     cursor: pointer;
-    color: rgb(218, 246, 255);
+    color: rgb(172, 172, 172);
 }
 .mainNavElText:hover,
 .mainNavElTextSelected:hover{
@@ -64,13 +125,17 @@
     font-style: normal;
     font-weight: normal;
   }
-
+.socialNavMobile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:15px;
+    list-style: none;
+    padding: 0;
+}
   /* Sociale-Lista */
 .socialNav{
-    display: flex;
-    gap:25px;
-    list-style: none;
-    padding-right: 10px;
+    display: none;
 }
 /* Element nawigacji - social media */
 .socialNavEl,
@@ -92,4 +157,46 @@
 .demoIconFb:hover{
     cursor: pointer;
     color: #1877F2;
+}
+
+@media screen and (min-width: 780px) {
+.mobileMenuShadowBox,.mobileMenuShadowBoxOff{display: none;}
+.mainNavEl{border: none;}
+.mainNavWrapperMenuMobile,.mainNavWrapperMenuMobileOff{display: none;}
+
+.mainNavWrapperMenu{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.navMobileBtn{
+    top:-50px;
+    opacity: 0;
+    pointer-events: none;
+}
+.navMobileBtnIco{
+    display: none;
+}
+/* Nawigacja-Lista */
+.mainNavList{
+    display: flex;
+    gap:50px;
+    list-style: none;
+    width:80%;
+    justify-content: center;
+}
+
+  /* Sociale-Lista */
+.socialNav{
+    display: flex;
+    gap:25px;
+    list-style: none;
+    padding-right: 10px;
+}
+
 }
