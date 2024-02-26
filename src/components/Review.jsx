@@ -1,16 +1,16 @@
-import styles from './Review.module.css';
-import { useState, useEffect } from 'react';
-import { getDay, getMonth, getDefYear } from 'services/DateFunctions';
+import styles from "./Review.module.css";
+import { useState, useEffect } from "react";
+import { getDay, getMonth, getDefYear } from "../services/DateFunctions";
 import {
   sendComment,
   deleteComment,
   showComment,
   hideComment,
-} from 'services/operations';
-import axios from 'axios';
-import { nanoid } from 'nanoid';
+} from "../services/operations";
+import axios from "axios";
+import { nanoid } from "nanoid";
 
-const API = 'https://65d39f84522627d501094a90.mockapi.io/';
+const API = "https://65d39f84522627d501094a90.mockapi.io/";
 
 export const Review = ({ token }) => {
   const setDate = () => {
@@ -23,10 +23,10 @@ export const Review = ({ token }) => {
 
   const [data, setData] = useState([]);
   const [comment, setComment] = useState({
-    name: '',
-    text: '',
+    name: "",
+    text: "",
     verify: false,
-    date: '',
+    date: "",
   });
 
   const ref = () => {
@@ -37,7 +37,7 @@ export const Review = ({ token }) => {
     try {
       const response = await axios.get(`${API}/comments/`);
       setData(response.data);
-      console.log('lodaing comments....');
+      console.log("lodaing comments....");
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -49,31 +49,31 @@ export const Review = ({ token }) => {
     getReviews();
   }, []);
 
-  const submitComment = e => {
+  const submitComment = (e) => {
     e.preventDefault();
     sendComment(comment);
     alert(
-      'Dziękujemy za opinię! Twój komentarz już niedługo pojawi się na stronie głównej! Jeżeli przejdzie pozytywnie weryfikację naszej administracji.'
+      "Dziękujemy za opinię! Twój komentarz już niedługo pojawi się na stronie głównej! Jeżeli przejdzie pozytywnie weryfikację naszej administracji."
     );
     ref();
     console.log(comment);
   };
 
-  const commentDelete = async index => {
+  const commentDelete = async (index) => {
     await deleteComment(index);
-    console.log('usunieto wpis o ID', index);
+    console.log("usunieto wpis o ID", index);
     ref();
   };
 
-  const commentShow = async index => {
+  const commentShow = async (index) => {
     await showComment(index);
-    console.log('pokazano wpis o ID', index);
+    console.log("pokazano wpis o ID", index);
     ref();
   };
 
-  const commentHide = async index => {
+  const commentHide = async (index) => {
     await hideComment(index);
-    console.log('pokazano wpis o ID', index);
+    console.log("pokazano wpis o ID", index);
     ref();
   };
 
@@ -85,7 +85,7 @@ export const Review = ({ token }) => {
             {data.toReversed().map(({ id, name, text, verify, date }) => {
               return (
                 <>
-                  {(token === 'admin' || verify === true) && (
+                  {(token === "admin" || verify === true) && (
                     <li
                       key={nanoid()}
                       className={
@@ -95,7 +95,7 @@ export const Review = ({ token }) => {
                     >
                       <div className={styles.reviewBtnBar}>
                         <p className={styles.reviewDate}>{date}</p>
-                        {token === 'admin' && (
+                        {token === "admin" && (
                           <>
                             {verify === true ? (
                               <button
@@ -153,7 +153,7 @@ export const Review = ({ token }) => {
               onClick={() => {
                 setDate();
               }}
-              onChange={e => {
+              onChange={(e) => {
                 setComment({ ...comment, name: e.target.value });
               }}
             />
@@ -161,7 +161,7 @@ export const Review = ({ token }) => {
               className={styles.reviewCommentFormEltext}
               placeholder="Wpisz swój komentarz."
               maxLength="500"
-              onChange={e => {
+              onChange={(e) => {
                 setComment({ ...comment, text: e.target.value });
               }}
             />

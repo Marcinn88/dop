@@ -1,5 +1,5 @@
-import { Header } from 'components/Header';
-import { News } from './News';
+import { Header } from "./Header";
+import { News } from "./News";
 export const Main = ({ token }) => {
   return (
     <>

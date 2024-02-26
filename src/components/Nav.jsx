@@ -1,11 +1,11 @@
-import styles from './Nav.module.css';
-import { Link } from 'react-router-dom';
+import styles from "./Nav.module.css";
+import { Link } from "react-router-dom";
 
 export const Nav = ({ selected, token }) => {
   return (
     <>
       <div className={styles.mainNav}>
-        {token === 'admin' && (
+        {token === "admin" && (
           <>
             <div className={styles.helloNav}>
               <p>
@@ -17,8 +17,8 @@ export const Nav = ({ selected, token }) => {
 
         <ul className={styles.mainNavList}>
           <li className={styles.mainNavEl}>
-            <Link to="/dop-bike/">
-              {selected === 'news' ? (
+            <Link to="/dop/">
+              {selected === "news" ? (
                 <p className={styles.mainNavElTextSelected}>News</p>
               ) : (
                 <p className={styles.mainNavElText}>News</p>
@@ -26,8 +26,8 @@ export const Nav = ({ selected, token }) => {
             </Link>
           </li>
           <li className={styles.mainNavEl}>
-            <Link to="/dop-bike/about">
-              {selected === 'about' ? (
+            <Link to="/dop/about">
+              {selected === "about" ? (
                 <p className={styles.mainNavElTextSelected}>O mnie</p>
               ) : (
                 <p className={styles.mainNavElText}>O mnie</p>
@@ -35,8 +35,8 @@ export const Nav = ({ selected, token }) => {
             </Link>
           </li>
           <li className={styles.mainNavEl}>
-            <Link to="/dop-bike/gallery">
-              {selected === 'gallery' ? (
+            <Link to="/dop/gallery">
+              {selected === "gallery" ? (
                 <p className={styles.mainNavElTextSelected}>Galeria</p>
               ) : (
                 <p className={styles.mainNavElText}>Galeria</p>
@@ -44,8 +44,8 @@ export const Nav = ({ selected, token }) => {
             </Link>
           </li>
           <li className={styles.mainNavEl}>
-            <Link to="/dop-bike/contact">
-              {selected === 'contact' ? (
+            <Link to="/dop/contact">
+              {selected === "contact" ? (
                 <p className={styles.mainNavElTextSelected}>Kontakt</p>
               ) : (
                 <p className={styles.mainNavElText}>Kontakt</p>

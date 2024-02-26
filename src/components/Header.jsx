@@ -1,8 +1,8 @@
-import styles from './Header.module.css';
-import { nanoid } from 'nanoid';
-import { useState } from 'react';
-import newsLetterImg from '../images/news.jpg';
-import { Nav } from './Nav';
+import styles from "./Header.module.css";
+import { nanoid } from "nanoid";
+import { useState } from "react";
+import newsLetterImg from "../images/news.jpg";
+import { Nav } from "./Nav";
 
 export const Header = ({ token }) => {
   const [modal, setModal] = useState(false);
@@ -12,16 +12,16 @@ export const Header = ({ token }) => {
   const openModal = () => {
     setModal(!modal);
     setNewsletter({
-      name: 'Nieznajomy',
-      email: '',
+      name: "Nieznajomy",
+      email: "",
     });
   };
-  const closeModal = e => {
+  const closeModal = (e) => {
     e.preventDefault();
     setModal(!modal);
   };
 
-  const submitNewsletter = e => {
+  const submitNewsletter = (e) => {
     e.preventDefault();
     console.log(newsletter);
     setSmallModal(!smallModal);
@@ -58,7 +58,7 @@ export const Header = ({ token }) => {
               Chcesz otrzymywać powiadomienia o najnowszych wydarzeniach?
             </p>
             <p className={styles.newsModalSubtitle}>
-              Jeżeli tak, to koniecznie zapisz się do{' '}
+              Jeżeli tak, to koniecznie zapisz się do{" "}
               <strong>NewsLettera!</strong>
             </p>
             <img
@@ -73,7 +73,7 @@ export const Header = ({ token }) => {
                   type="text"
                   placeholder="imię"
                   required
-                  onChange={e => {
+                  onChange={(e) => {
                     setNewsletter({ ...newsletter, name: e.target.value });
                   }}
                 ></input>
@@ -82,7 +82,7 @@ export const Header = ({ token }) => {
                   type="email"
                   placeholder="email"
                   required
-                  onChange={e => {
+                  onChange={(e) => {
                     setNewsletter({ ...newsletter, email: e.target.value });
                   }}
                 ></input>
@@ -101,7 +101,7 @@ export const Header = ({ token }) => {
       )}
 
       <div className={styles.main} id={nanoid()}>
-        <Nav selected={'news'} token={token} />
+        <Nav selected={"news"} token={token} />
         <div className={styles.mainTitle}>DOP</div>
         <div className={styles.subTitle}>Maciej Bielicki</div>
 

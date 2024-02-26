@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Main } from "./components/Main";
+import { Routes, Route } from "react-router-dom";
+import { Layout } from "./layouts/layout";
+import { About } from "./components/About";
+import { Gallery } from "./components/Gallery";
+import { Contact } from "./components/Contact";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const tokenChecker = () => {
+    try {
+      const token = localStorage.getItem("token");
+      const parsedToken = JSON.parse(token).token;
+      return parsedToken;
+    } catch (error) {
+      localStorage.setItem("token", JSON.stringify({ token: "" }));
+      const token = localStorage.getItem("token");
+      const parsedToken = JSON.parse(token).token;
+      return parsedToken;
+    }
+  };
 
+  console.log("server uruchomiony");
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    <Routes>
+      <Route path="/dop/" element={<Layout token={tokenChecker()} />}>
+        <Route path="/dop/" element={<Main token={tokenChecker()} />} />
+        <Route path="/dop/about" element={<About token={tokenChecker()} />} />
+        <Route
+          path="/dop/gallery"
+          element={<Gallery token={tokenChecker()} />}
+        />
+        <Route
+          path="/dop/contact"
+          element={<Contact token={tokenChecker()} />}
+        />
+        {/* <Route path="*" element={<NoMatch />} /> */}
+      </Route>
+    </Routes>
+  );
+};
+export default App;
