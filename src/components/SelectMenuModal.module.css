@@ -1,0 +1,95 @@
+.wrapper {
+    font-family: 'Montserrat', sans-serif;
+	color: black;
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 50;
+}
+
+.selectBtn,
+.selectBtnGrey {
+	display: flex;
+	background-color: rgb(180, 180, 180);
+	box-sizing: border-box;
+	padding: 10px;
+	height: 30px;
+	width: 300px;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	font-size: 16px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	cursor: pointer;
+	z-index: 56;
+	transition: all 0.5s;
+}
+.selectBtnGrey {
+	color: #585858;
+}
+
+.selectBtn:hover,
+.selectBtnGrey:hover{
+	background-color: rgb(219, 219, 219);
+}
+
+.optionsContainer {
+	background-color: rgba(192, 192, 192, 0.85);
+	opacity: 100%;
+	border-radius: 3px;
+	width: 300px;
+	display: flex;
+	position: absolute;
+	backdrop-filter: blur(20px);
+	top: 35px;
+	left: 0;
+	z-index: 60;
+}
+.options {
+	list-style: none;
+	margin: 5px;
+	cursor: pointer;
+	text-align: left;
+	width: 300px;
+	padding: 0;
+	opacity: 100%;
+}
+
+.option {
+	color: black;
+	font-size: 18px;
+	padding: 5px 15px;
+	width: 300px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+}
+
+.option:hover {
+    font-family: 'Montserrat', sans-serif;
+	font-weight: 800;
+	background-color: #ffffffcb;
+	border-radius: 3px;
+	width: 87%;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.option:first-child {
+	margin-top: 5px;
+}
+.option:last-child {
+	margin-bottom: 5px;
+}
+
+.backdrop {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	opacity: 50%;
+	top: -50px;
+	left: -35%;
+	z-index: 5;
+}

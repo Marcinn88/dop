@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Tytul Nowego Newsa",
+        "date": {
+          "day": "21",
+          "month": "01",
+          "year": "2024"
+        },
+        "photo_position": "left",
+        "photo": "maciek3.jpg",
+        "text1":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate",
+        "text2":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate",
+        "text3":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate"
+      },    {
+        "title": "Do czego służy drugie koło?",
+        "date": {
+          "day": "20",
+          "month": "01",
+          "year": "2024"
+        },
+        "photo_position": "right",
+        "photo": "maciek2.jpg",
+        "text1":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate",
+        "text2":
+          "",
+        "text3":
+          ""
+      },    {
+        "title": "W00ooow, co się odstuntowało!",
+        "date": {
+          "day": "13",
+          "month": "12",
+          "year": "2023"
+        },
+        "photo_position": "left",
+        "photo": "maciek.jpg",
+        "text1":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate",
+        "text2":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate",
+        "text3":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate"
+      },    {
+        "title": "AAAaaale duzo dymu!!!!",
+        "date": {
+          "day": "02",
+          "month": "10",
+          "year": "2023"
+        },
+        "photo_position": "right",
+        "photo": "maciek4.jpg",
+        "text1":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate",
+        "text2":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error illum mollitia beatae aliquam temporibus facilis suscipit, tempora, veniam optio, non dicta eveniet qui dolorem amet est debitis omnis ex expedita? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam exercitationem fuga mollitia adipisci saepe cupiditate quidem quam ex doloremque expedita dolorum assumenda facilis, sed aperiam maiores? Sapiente suscipit nam voluptate",
+        "text3":
+          ""
+      }]

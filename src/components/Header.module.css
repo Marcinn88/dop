@@ -1,0 +1,192 @@
+/* @media screen and (min-width: 768px) {	} */
+.main{
+    background-color: black;
+    width: 90%;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: relative;
+    background-image: url(../images/motor.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Tytuł */
+.mainTitle{
+    color:white;
+    font-size: 285px;
+    font-family: 'Oswald', sans-serif;
+    position: absolute;
+    left:50px;
+    bottom: 150px;
+    cursor: default;
+}
+/* Podtytuł */
+.subTitle{
+    color:white;
+    font-size: 78px;
+    font-family: 'Oswald', sans-serif;
+    position: absolute;
+    left:60px;
+    bottom: 80px;
+    cursor: default;
+}
+/* Nawigacja */
+.mainNav{
+    background-color: rgb(0, 0, 0, 0.5);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Nawigacja-Lista */
+.mainNavList{
+    display: flex;
+    gap:50px;
+    list-style: none;
+    width:80%;
+    justify-content: center;
+}
+
+
+  /* Sociale-Lista */
+.socialNav{
+    display: flex;
+    gap:25px;
+    list-style: none;
+    padding-right: 10px;
+}
+/* Element nawigacji - social media */
+.socialNavEl,
+.socialNavEl a{
+    color:white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.demoIconYt:hover{
+    cursor: pointer;
+    color:#df0000 ;
+}
+.demoIconInsta:hover{
+    cursor: pointer;
+    color:#b22cff;
+}
+.demoIconFb:hover{
+    cursor: pointer;
+    color: #1877F2;
+}
+
+.mainButton{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    right:100px;
+    bottom: 100px;
+    background-color: #0000007a;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Oswald', sans-serif; 
+    font-size: 45px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.mainButton:hover{box-shadow: 8px 8px 24px 0px rgba(0, 0, 0, 0.4);
+}
+
+.newsLetterModal,
+.newsLetterSmallModal{
+    position: absolute;
+    width: 70%;
+    height: 90vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    left:15%;
+    top:5vh;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+.newsLetterSmallModal{
+    width: 50%;
+    left:25%;
+    height: 20vh;
+    top:40vh;
+    justify-content: center;
+}
+.shadowBox,
+.smallShadowBox{
+    background-color: rgba(0, 0, 0, 0.767);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+.newsLetterForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    padding: 5px;
+    gap: 20px;
+}
+.newsLetterInputContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 25px;
+}
+.newsLetterFormEl{
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    height: 30px;
+}
+.newsLetterBtnContainer{
+    display: flex;
+    gap: 30px;
+}
+.newsModalTitle{
+        font-family: 'Oswald', sans-serif;
+        color:#000000b4
+    }
+.newsLetterImg{
+    max-width: 35%;
+}
+.modalNewsBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.37);
+    font-family: 'Oswald';
+    font-size: 15px;
+    color: #000000;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.modalNewsBtn:hover{
+    background-color: rgb(245, 245, 245);
+}
+.newsModalSubtitle{
+    padding: 0;
+    margin: 0;
+}

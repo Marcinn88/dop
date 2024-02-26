@@ -1,0 +1,95 @@
+
+/* Nawigacja */
+.mainNav{
+    background-color: rgb(0, 0, 0, 0.5);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.helloNav{
+    color: white;
+    position: absolute;
+    left: 10px;
+    
+}
+/* Nawigacja-Lista */
+.mainNavList{
+    display: flex;
+    gap:50px;
+    list-style: none;
+    width:80%;
+    justify-content: center;
+    
+}
+/* Element nawigacji */
+
+.mainNavList a{
+    text-decoration: none;
+}
+.mainNavElText,
+.mainNavElTextSelected{
+    color:white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+.mainNavElTextSelected{
+    cursor: pointer;
+    color: rgb(218, 246, 255);
+}
+.mainNavElText:hover,
+.mainNavElTextSelected:hover{
+    cursor: pointer;
+    color: lightblue;
+    transition: all 0.5s;
+}
+
+@font-face {
+    font-family: 'fontello';
+    src: url('../fonts/font/fontello.eot?86056');
+    src: url('../fonts/font/fontello.eot?86056#iefix') format('embedded-opentype'),
+      url('../fonts/font/fontello.woff?86056') format('woff'),
+      url('../fonts/font/fontello.ttf?86056') format('truetype'),
+      url('../fonts/font/fontello.svg?86056#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .demoIconYt,
+  .demoIconFb,
+  .demoIconInsta {
+    font-family: 'fontello';
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  /* Sociale-Lista */
+.socialNav{
+    display: flex;
+    gap:25px;
+    list-style: none;
+    padding-right: 10px;
+}
+/* Element nawigacji - social media */
+.socialNavEl,
+.socialNavEl a{
+    color:white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.demoIconYt:hover{
+    cursor: pointer;
+    color:#df0000 ;
+}
+.demoIconInsta:hover{
+    cursor: pointer;
+    color:#b22cff;
+}
+.demoIconFb:hover{
+    cursor: pointer;
+    color: #1877F2;
+}

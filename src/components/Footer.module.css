@@ -1,0 +1,138 @@
+
+@font-face {
+    font-family: 'fontello';
+    src: url('../fonts/font/fontello.eot?86056');
+    src: url('../fonts/font/fontello.eot?86056#iefix') format('embedded-opentype'),
+      url('../fonts/font/fontello.woff?86056') format('woff'),
+      url('../fonts/font/fontello.ttf?86056') format('truetype'),
+      url('../fonts/font/fontello.svg?86056#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .demoIconDesktop {
+    font-family: 'fontello';
+    font-style: normal;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+  }
+  .loginShadowBox{
+    background-color: rgba(0, 0, 0, 0.767);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 14;
+  }
+
+.loginModal{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.459);
+    border: 1px solid rgba(82, 82, 82, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 3px;
+    z-index: 15;
+    left:20%;
+    top:50px;
+    padding: 20px 0;
+    gap: 25px;
+    box-shadow: 9px 9px 24px 0px rgb(17, 17, 17);
+}
+.modalNewsBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.37);
+    font-family: 'Oswald';
+    font-size: 15px;
+    color: #000000;
+    padding: 0;
+    margin: 0;
+    margin-top: 15px;
+    background-color: rgb(175, 175, 175);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.modalNewsBtn:hover{
+background-color: rgb(221, 221, 221);
+}
+.loginTextBox{
+    width: 90%;
+    padding: 5px;
+    height: 25px;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 3px;
+    text-align: center;
+}
+.loginTitle{
+    font-family: 'Oswald', sans-serif;
+    color:#dadadab4
+}
+.footer{
+    height: 100%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    color:#dfdfdfb4;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.041);
+}
+
+.footer_link{
+    cursor: pointer;
+}
+.footer_link_admin{
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.footer_lists{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    /* background-color: blue; */
+}
+.footer_list_container{
+    /* background-color: green; */
+    padding: 10px;
+    gap:15px;
+}
+.footer_list{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    list-style: none;
+    padding: 0;
+    gap: 5px;
+}
+.footer_list_element a{
+    color:#dfdfdfb4;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+.footer_list_element:hover,
+.footer_list_element a:hover{
+    cursor: pointer;
+    color: white;
+}
+.copyright{
+    color:rgba(255, 255, 255, 0.15);
+}
+.footer_list_copyLink{
+    color:rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    
+}

@@ -1,0 +1,8 @@
+.loader {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  z-index: 9999;
+  margin-top: -50px;
+  margin-left: -50px;
+}
