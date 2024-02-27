@@ -288,6 +288,8 @@
     height: auto;
     max-height: 100%;
     border-radius: 3px;
+    z-index: 10;
+    cursor: zoom-in;
 }
 .galleryWindowBtn{
     position: absolute;
@@ -666,6 +668,30 @@ color:rgb(172, 172, 172);
 }
 .gallerySmallWindowWrapper div img{
     object-fit: contain;
+}
+
+.bigPhotoModal{
+    position: fixed;
+    background-color: rgba(22, 22, 22, 0.8);
+    border-radius: 5px;
+    top:2.5%;
+    left: 2.5%;
+    width: 95%;
+    height: 95%;
+    z-index: 4;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bigPhotoImage{
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    cursor: zoom-out;
 }
 @media screen and (min-width: 600px) {
     .gallerySmallWindowWrapper div img{

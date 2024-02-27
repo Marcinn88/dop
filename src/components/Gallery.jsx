@@ -29,8 +29,10 @@ export const Gallery = ({ token }) => {
   const [placeholder, setPlaceholder] = useState("Wybierz album z listy");
   const [delFactor, setDelFactor] = useState(false);
   const [currentGallery, setCurrentGallery] = useState({});
+
   const [currentPhotoGallery, setCurrentPhotoGallery] = useState([]);
   const [activePhoto, setActivePhoto] = useState(0);
+  const [bigPhoto, setBigPhoto] = useState(false);
 
   const ref = () => {
     window.location.reload(false);
@@ -220,6 +222,8 @@ export const Gallery = ({ token }) => {
     setCurrentGallery(results[0]);
     setCurrentPhotoGallery(filteredResults);
     setActivePhoto(0);
+    console.log("current gallery", currentGallery);
+    console.log("current gallery", currentPhotoGallery);
   };
 
   const stepUp = () => {
@@ -232,10 +236,47 @@ export const Gallery = ({ token }) => {
     activePhoto === 0 ? setActivePhoto(0) : setActivePhoto(activePhoto - 1);
   };
 
+  const bigPhotoToggle = () => {
+    setBigPhoto(!bigPhoto);
+    console.log(activePhoto);
+  };
   return (
     <>
       {data && <></>}
       <div className={styles.galleryWrapper}>
+        {bigPhoto && (
+          <>
+            <div
+              className={styles.galleryNewAlbumShadowBox}
+              onClick={() => {
+                bigPhotoToggle();
+              }}
+            ></div>
+            <div
+              className={styles.bigPhotoModal}
+              onClick={() => {
+                bigPhotoToggle();
+              }}
+            >
+              <button
+                className={styles.galleryCloseBtn}
+                onClick={() => {
+                  bigPhotoToggle();
+                }}
+              >
+                +
+              </button>
+              <img
+                src={currentPhotoGallery[activePhoto].photo}
+                alt="Bike"
+                className={styles.bigPhotoImage}
+                onClick={() => {
+                  bigPhotoToggle();
+                }}
+              />
+            </div>
+          </>
+        )}
         {newAlbumModal && (
           <>
             <div
@@ -629,6 +670,9 @@ export const Gallery = ({ token }) => {
                       src={currentPhotoGallery[activePhoto].photo}
                       alt="Bike"
                       className={styles.galleryWindowImage}
+                      onClick={() => {
+                        bigPhotoToggle();
+                      }}
                     />
                   ) : (
                     <p>Brak zdjęć</p>
