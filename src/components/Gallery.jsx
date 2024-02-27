@@ -645,7 +645,6 @@ export const Gallery = ({ token }) => {
               </div>
               <div className={styles.gallerySmallWindowWrapper}>
                 {currentPhotoGallery.map(({ hidden, photo }, index) => {
-                  // const defImage = defaultPhoto;
                   return (
                     <div
                       className={
