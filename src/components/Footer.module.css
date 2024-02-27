@@ -136,3 +136,9 @@ background-color: rgb(221, 221, 221);
     text-decoration: none;
     
 }
+@media screen and (min-width: 1200px) {
+    .loginModal{
+        left:30%;
+        width: 40%;
+    }
+}

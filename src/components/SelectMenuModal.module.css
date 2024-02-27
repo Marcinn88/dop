@@ -17,7 +17,8 @@
 	box-sizing: border-box;
 	padding: 10px;
 	height: 30px;
-	width: 300px;
+    width: 100%;
+	max-width: 200px;
 	justify-content: center;
 	align-items: center;
 	color: black;
@@ -41,12 +42,13 @@
 	background-color: rgba(192, 192, 192, 0.85);
 	opacity: 100%;
 	border-radius: 3px;
-	width: 300px;
+	width: 100%;
+	max-width: 200px;
 	display: flex;
 	position: absolute;
 	backdrop-filter: blur(20px);
 	top: 35px;
-	left: 0;
+	left: 50px;
 	z-index: 60;
 }
 .options {

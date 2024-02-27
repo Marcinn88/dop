@@ -1,18 +1,18 @@
-import styles from './Gallery.module.css';
-import selectStyles from './SelectMenuModal.module.css';
-import { Nav } from './Nav';
-import { useState, useEffect } from 'react';
-import { addAlbum, saveAlbum, deleteAlbum } from '../services/operations';
-import { nanoid } from 'nanoid';
-import axios from 'axios';
+import styles from "./Gallery.module.css";
+import selectStyles from "./SelectMenuModal.module.css";
+import { Nav } from "./Nav";
+import { useState, useEffect } from "react";
+import { addAlbum, saveAlbum, deleteAlbum } from "../services/operations";
+import { nanoid } from "nanoid";
+import axios from "axios";
 
-import ico from '../images/more.png';
-import ico_star from '../images/star.png';
-import ico_del from '../images/delete.png';
-import ico_hidden from '../images/hidden.png';
-import ico_unhidden from '../images/unhidden.png';
+import ico from "../images/more.png";
+import ico_star from "../images/star.png";
+import ico_del from "../images/delete.png";
+import ico_hidden from "../images/hidden.png";
+import ico_unhidden from "../images/unhidden.png";
 
-import defaultPhoto from '../images/default.jpg';
+import defaultPhoto from "../images/default.jpg";
 
 export const Gallery = ({ token }) => {
   const [gallery, setGallery] = useState(false);
@@ -26,7 +26,7 @@ export const Gallery = ({ token }) => {
   const [apiFiles, setApiFiles] = useState({});
   const [selectModal, setSelectModal] = useState(false);
   const [selectName, setSelectName] = useState(`Wybierz album z listy`);
-  const [placeholder, setPlaceholder] = useState('Wybierz album z listy');
+  const [placeholder, setPlaceholder] = useState("Wybierz album z listy");
   const [delFactor, setDelFactor] = useState(false);
   const [currentGallery, setCurrentGallery] = useState({});
   const [currentPhotoGallery, setCurrentPhotoGallery] = useState([]);
@@ -41,7 +41,7 @@ export const Gallery = ({ token }) => {
         `https://65d784e727d9a3bc1d7b3c59.mockapi.io/gallery/`
       );
       setData(response.data);
-      console.log('lodaing Albums....');
+      console.log("lodaing Albums....");
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -64,14 +64,14 @@ export const Gallery = ({ token }) => {
   const openAddGallery = () => {
     setAddGalleryModal(true);
     setUploadedOne(false);
-    setPlaceholder('Wybierz album z listy');
-    setSelectName('Wybierz album z listy');
+    setPlaceholder("Wybierz album z listy");
+    setSelectName("Wybierz album z listy");
     setAlbum({
-      album: '',
-      id: '1',
-      main_id: '0',
+      album: "",
+      id: "1",
+      main_id: "0",
       hidden: false,
-      description: '',
+      description: "",
       photos: [],
     });
   };
@@ -81,7 +81,7 @@ export const Gallery = ({ token }) => {
   };
 
   const logOut = () => {
-    localStorage.setItem('token', JSON.stringify({ token: '' }));
+    localStorage.setItem("token", JSON.stringify({ token: "" }));
     setLoggedIn(!loggedIn);
     ref();
   };
@@ -93,10 +93,10 @@ export const Gallery = ({ token }) => {
   const openNewAlbumModal = () => {
     setNewAlbumModal(true);
     setNewAlbum({
-      album: '',
-      main_id: '0',
+      album: "",
+      main_id: "0",
       hidden: false,
-      description: '',
+      description: "",
       photos: [],
     });
   };
@@ -105,8 +105,8 @@ export const Gallery = ({ token }) => {
   };
 
   const onSubmit = async () => {
-    console.log('Submit wciśnięty.');
-    console.log('Gotowy do wyslania album', album);
+    console.log("Submit wciśnięty.");
+    console.log("Gotowy do wyslania album", album);
     await saveAlbum(album, album.id);
     closeAddGallery();
     ref();
@@ -131,7 +131,7 @@ export const Gallery = ({ token }) => {
     setAlbum({ ...album, photos: albumArray });
   };
 
-  const deletePhoto = index => {
+  const deletePhoto = (index) => {
     let albumArray = album.photos;
     albumArray.splice(index, 1);
     setAlbum({ ...album, photos: albumArray });
@@ -143,17 +143,17 @@ export const Gallery = ({ token }) => {
   const toogleSelectModal = () => {
     setSelectModal(!selectModal);
   };
-  const changeName = e => {
+  const changeName = (e) => {
     const newName = e;
     setSelectName(newName);
     setSelectModal(!selectModal);
     return newName;
   };
 
-  const selectAlbumHandler = async e => {
-    const results = data.filter(el => el.album === e);
-    console.log('results filtered', results);
-    console.log('results photos', results[0].photos);
+  const selectAlbumHandler = async (e) => {
+    const results = data.filter((el) => el.album === e);
+    console.log("results filtered", results);
+    console.log("results photos", results[0].photos);
     setAlbum({
       ...album,
       album: e,
@@ -169,21 +169,21 @@ export const Gallery = ({ token }) => {
   const uploadPhoto = async () => {
     let newArray = album.photos;
     const formData = new FormData();
-    formData.append('file', apiFiles);
-    formData.append('upload_preset', 'dop-bike');
-    console.log('formData', formData);
+    formData.append("file", apiFiles);
+    formData.append("upload_preset", "dop-bike");
+    console.log("formData", formData);
     try {
       await axios
         .post(
-          'https://api.cloudinary.com/v1_1/djwth1q7u/image/upload',
+          "https://api.cloudinary.com/v1_1/djwth1q7u/image/upload",
           formData
         )
-        .then(response => {
+        .then((response) => {
           console.log(response);
           console.log(response.data.secure_url);
           newArray.push({ hidden: false, photo: response.data.secure_url });
           setAlbum({ ...album, photos: newArray });
-          console.log('album mam nadzieje po zmianach', album);
+          console.log("album mam nadzieje po zmianach", album);
         });
     } catch (error) {
       console.error(error.message);
@@ -201,20 +201,22 @@ export const Gallery = ({ token }) => {
     setDelFactor(!delFactor);
   };
 
-  const openAdminGalleryWindow = async id => {
+  const openAdminGalleryWindow = async (id) => {
     openGallery();
-    const results = data.filter(el => el.id === id);
+    const results = data.filter((el) => el.id === id);
     setCurrentGallery(results[0]);
     setCurrentPhotoGallery(results[0].photos);
     setActivePhoto(0);
   };
 
-  const openGalleryWindow = async id => {
+  const openGalleryWindow = async (id) => {
     openGallery();
-    const results = data.filter(el => el.id === id);
-    const filteredResults = results[0].photos.filter(el => el.hidden === false);
-    console.log('results', results);
-    console.log('filteredResults', filteredResults);
+    const results = data.filter((el) => el.id === id);
+    const filteredResults = results[0].photos.filter(
+      (el) => el.hidden === false
+    );
+    console.log("results", results);
+    console.log("filteredResults", filteredResults);
     setCurrentGallery(results[0]);
     setCurrentPhotoGallery(filteredResults);
     setActivePhoto(0);
@@ -259,7 +261,7 @@ export const Gallery = ({ token }) => {
                     <input
                       type="text"
                       className={styles.modalNewAlbumTextInput}
-                      onChange={e => {
+                      onChange={(e) => {
                         setNewAlbum({ ...newAlbum, album: e.target.value });
                       }}
                     />
@@ -269,7 +271,7 @@ export const Gallery = ({ token }) => {
                       maxLength="100"
                       name="album"
                       className={styles.modalNewAlbumTextAreaInput}
-                      onChange={e => {
+                      onChange={(e) => {
                         setNewAlbum({
                           ...newAlbum,
                           description: e.target.value,
@@ -285,13 +287,13 @@ export const Gallery = ({ token }) => {
                         alt="bike"
                       />
                       <p className={styles.gallerySubTitle}>
-                        {newAlbum.album === ''
-                          ? 'Przykładowy Tytuł'
+                        {newAlbum.album === ""
+                          ? "Przykładowy Tytuł"
                           : newAlbum.album}
                       </p>
                       <p className={styles.gallerySubText}>
-                        {newAlbum.description === ''
-                          ? 'Pzykładowy opis Albumu'
+                        {newAlbum.description === ""
+                          ? "Pzykładowy opis Albumu"
                           : newAlbum.description}
                       </p>
                       <button className={styles.galleryBtn}>Otwórz</button>
@@ -356,7 +358,7 @@ export const Gallery = ({ token }) => {
                             return (
                               <li
                                 key={nanoid()}
-                                onClick={e => {
+                                onClick={(e) => {
                                   changeName(e.target.innerText);
                                   selectAlbumHandler(e.target.innerText);
                                 }}
@@ -386,7 +388,7 @@ export const Gallery = ({ token }) => {
                         type="file"
                         accept="image/*;capture=camera"
                         className={styles.addGalleryModalFileUpladInput}
-                        onChange={e => {
+                        onChange={(e) => {
                           setApiFiles(e.target.files[0]);
                           console.log(apiFiles);
                         }}
@@ -527,7 +529,7 @@ export const Gallery = ({ token }) => {
                                   onClick={() => {
                                     mainIndex === index.toString()
                                       ? alert(
-                                          'Nie możesz skasować zdjęcia głównego.'
+                                          "Nie możesz skasować zdjęcia głównego."
                                         )
                                       : deletePhoto(index);
                                   }}
@@ -555,12 +557,12 @@ export const Gallery = ({ token }) => {
                 onClick={() => {
                   album.album.length > 0
                     ? onSubmit()
-                    : alert('Brak wybranego albumu');
+                    : alert("Brak wybranego albumu");
                 }}
               >
                 Zapisz w Galerii
               </button>
-              <div>
+              <div className={styles.addGalleryModalAlbumLisDelete}>
                 <label className={styles.addGalleryModalDeleteInboxContainer}>
                   <input
                     type="checkbox"
@@ -574,10 +576,10 @@ export const Gallery = ({ token }) => {
                   <button
                     className={styles.addGalleryModalAlbumListBtn}
                     onClick={() => {
-                      album.album === ''
-                        ? alert('Brak wybranego albumu.')
-                        : album.id === 'new'
-                        ? alert('Nie możesz skasować niezapisanego albumu.')
+                      album.album === ""
+                        ? alert("Brak wybranego albumu.")
+                        : album.id === "new"
+                        ? alert("Nie możesz skasować niezapisanego albumu.")
                         : onDelete();
                     }}
                   >
@@ -671,7 +673,7 @@ export const Gallery = ({ token }) => {
             </div>
           </>
         )}
-        {token === 'admin' ? (
+        {token === "admin" ? (
           <div className={styles.galleryAdminPanel}>
             <button
               className={styles.addGalleryBtn}
@@ -689,7 +691,7 @@ export const Gallery = ({ token }) => {
         ) : (
           <></>
         )}
-        <Nav selected={'gallery'} token={token} />
+        <Nav selected={"gallery"} token={token} />
         <p className={styles.galleryTitle}>Galeria!</p>
         <p className={styles.galleryText}>
           Na tej stronie pojawią się zdjęcia.
@@ -703,7 +705,7 @@ export const Gallery = ({ token }) => {
                   key={nanoid()}
                   className={styles.galleryElement}
                   onClick={() => {
-                    token === 'admin'
+                    token === "admin"
                       ? openAdminGalleryWindow(id)
                       : openGalleryWindow(id);
                   }}

@@ -226,7 +226,7 @@ export const News = ({ token }) => {
           <div onClick={closeModal} className={styles.shadowBox}></div>
           <div className={styles.addNewsModal}>
             {!editModal ? (
-              <h1 className={styles.addNewsModalTitle}>Dodaj nowy wpis!</h1>
+              <h1 className={styles.addNewsModalTitle}>Dodaj nowy wpis:</h1>
             ) : (
               <h1 className={styles.addNewsModalTitle}>Edytuj wpis!</h1>
             )}
@@ -240,7 +240,7 @@ export const News = ({ token }) => {
                   className={styles.modalTitle}
                   type="text"
                   name="title"
-                  maxLength="50"
+                  maxLength="35"
                   placeholder="Wpisz tytuł"
                   onChange={(e) => {
                     setPost({ ...post, title: e.target.value });

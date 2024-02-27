@@ -37,6 +37,7 @@
     height: 50px;
     opacity: 1;
     transition: all 0.5s;
+    cursor: pointer;
 }
 .mainNavListMobile{
     display: flex;
