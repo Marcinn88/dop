@@ -78,16 +78,16 @@ export const Footer = ({ token }) => {
             <p>Nawigacja:</p>
             <ul className={styles.footer_list}>
               <li className={styles.footer_list_element}>
-                <Link to="/dop-bike/">Newsy</Link>
+                <Link to="/dop/">Newsy</Link>
               </li>
               <li className={styles.footer_list_element}>
-                <Link to="/dop-bike/about">O mnie</Link>
+                <Link to="/dop/about">O mnie</Link>
               </li>
               <li className={styles.footer_list_element}>
-                <Link to="/dop-bike/gallery">Galeria</Link>
+                <Link to="/dop/gallery">Galeria</Link>
               </li>
               <li className={styles.footer_list_element}>
-                <Link to="/dop-bike/contact">Kontakt</Link>
+                <Link to="/dop/contact">Kontakt</Link>
               </li>
             </ul>
           </div>
