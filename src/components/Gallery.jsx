@@ -259,7 +259,7 @@ export const Gallery = ({ token }) => {
               }}
             >
               <button
-                className={styles.galleryCloseBtn}
+                className={styles.bigPhotoCloseBtn}
                 onClick={() => {
                   bigPhotoToggle();
                 }}

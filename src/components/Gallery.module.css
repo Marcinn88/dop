@@ -193,7 +193,8 @@
 .addGalleryImagesPreviewElIco:hover .dropDownList{
     display: block;
 }
-.galleryCloseBtn{
+.galleryCloseBtn,
+.bigPhotoCloseBtn{
     position: absolute;
     top:-15px;
     right:-15px;
@@ -692,6 +693,12 @@ color:rgb(172, 172, 172);
     height: auto;
     max-height: 100%;
     cursor: zoom-out;
+}
+.bigPhotoCloseBtn{
+
+        top:-5px;
+        right:-5px;
+
 }
 @media screen and (min-width: 600px) {
     .gallerySmallWindowWrapper div img{
