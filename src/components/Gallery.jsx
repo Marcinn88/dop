@@ -234,7 +234,8 @@ export const Gallery = ({ token }) => {
     activePhoto === currentPhotoGallery.length - 1
       ? setActivePhoto(0)
       : setActivePhoto(activePhoto + 1);
-    console.log(currentPhotoGallery);
+    console.log(currentGalleryLength);
+    console.log(activePhoto);
   };
 
   const stepDown = () => {
@@ -755,7 +756,10 @@ export const Gallery = ({ token }) => {
                       className={
                         (activePhoto < 3 && index > 4) ||
                         (activePhoto > 2 && index > activePhoto + 2) ||
-                        (activePhoto < currentGalleryLength - 1 &&
+                        (index < activePhoto - 2 &&
+                          activePhoto < currentGalleryLength - 2) ||
+                        (activePhoto > currentGalleryLength - 3 &&
+                          activePhoto !== currentGalleryLength - 1 &&
                           index < activePhoto - 3) ||
                         (activePhoto === currentGalleryLength - 1 &&
                           index < activePhoto - 4)
