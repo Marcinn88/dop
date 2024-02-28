@@ -111,8 +111,6 @@ export const Gallery = ({ token }) => {
   };
 
   const onSubmit = async () => {
-    console.log("Submit wciśnięty.");
-    console.log("Gotowy do wyslania album", album);
     await saveAlbum(album, album.id);
     closeAddGallery();
     ref();
@@ -158,8 +156,6 @@ export const Gallery = ({ token }) => {
 
   const selectAlbumHandler = async (e) => {
     const results = data.filter((el) => el.album === e);
-    console.log("results filtered", results);
-    console.log("results photos", results[0].photos);
     setAlbum({
       ...album,
       album: e,
@@ -169,7 +165,6 @@ export const Gallery = ({ token }) => {
       main_id: results[0].main_id,
       photos: results[0].photos,
     });
-    console.log(album);
   };
 
   const uploadPhoto = async () => {
@@ -197,7 +192,6 @@ export const Gallery = ({ token }) => {
   };
 
   const onDelete = async () => {
-    console.log(album.id);
     await deleteAlbum(album.id);
     closeAddGallery();
     ref();
@@ -214,7 +208,6 @@ export const Gallery = ({ token }) => {
     setCurrentPhotoGallery(results[0].photos);
     setActivePhoto(0);
     setCurrentGalleryLength(results[0].photos.length);
-    console.log("dlugosc", currentGalleryLength);
   };
 
   const openGalleryWindow = async (id) => {
@@ -226,16 +219,13 @@ export const Gallery = ({ token }) => {
     setCurrentGallery(results[0]);
     setCurrentPhotoGallery(filteredResults);
     setActivePhoto(0);
-    setCurrentGalleryLength(results[0].photos.length);
-    console.log("dlugosc", currentGalleryLength);
+    setCurrentGalleryLength(filteredResults.length);
   };
 
   const stepUp = () => {
     activePhoto === currentPhotoGallery.length - 1
       ? setActivePhoto(0)
       : setActivePhoto(activePhoto + 1);
-    console.log(currentGalleryLength);
-    console.log(activePhoto);
   };
 
   const stepDown = () => {
@@ -244,33 +234,13 @@ export const Gallery = ({ token }) => {
       : setActivePhoto(activePhoto - 1);
   };
 
-  const setMiniatureGallery = () => {
-    activePhoto < 2
-      ? setCurrentMiniGallery(currentPhotoGallery.slice(0, 5))
-      : activePhoto < currentPhotoGallery.length - 2
-      ? setCurrentMiniGallery(
-          currentPhotoGallery.slice(activePhoto - 2, activePhoto + 2)
-        )
-      : setCurrentMiniGallery(
-          currentPhotoGallery.slice(
-            currentPhotoGallery.length - 5,
-            currentPhotoGallery.length
-          )
-        );
-    console.log("currentMiniGallery", currentMiniGallery);
-    console.log("photogallery lenght", currentPhotoGallery.length);
-    console.log("active photo", activePhoto);
-  };
-
   const bigPhotoToggle = () => {
     setBigPhoto(!bigPhoto);
-    console.log(activePhoto);
   };
 
   const closeGalleryDropDown = () => {
     setGalleryDropDown(false);
     setDropdownModal(false);
-    console.log("dropdown on/off");
   };
 
   return (
@@ -748,9 +718,6 @@ export const Gallery = ({ token }) => {
               </div>
               <div className={styles.gallerySmallWindowWrapper}>
                 {currentPhotoGallery.map(({ hidden, photo }, index) => {
-                  // activephoto
-                  // index
-                  // currentGalleryLength
                   return (
                     <div
                       className={
@@ -759,9 +726,9 @@ export const Gallery = ({ token }) => {
                         (index < activePhoto - 2 &&
                           activePhoto < currentGalleryLength - 2) ||
                         (activePhoto > currentGalleryLength - 3 &&
-                          activePhoto !== currentGalleryLength - 1 &&
+                          activePhoto != currentGalleryLength - 1 &&
                           index < activePhoto - 3) ||
-                        (activePhoto === currentGalleryLength - 1 &&
+                        (activePhoto == currentGalleryLength - 1 &&
                           index < activePhoto - 4)
                           ? styles.gallerySmallWindowDisplay
                           : activePhoto === index && hidden
@@ -774,6 +741,7 @@ export const Gallery = ({ token }) => {
                       }
                       onClick={() => {
                         setActivePhoto(index);
+                        console.log(index);
                       }}
                     >
                       <img
