@@ -7,7 +7,7 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	z-index: 50;
+	z-index: 2;
 }
 
 .selectBtn,
@@ -26,7 +26,7 @@
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	border-radius: 3px;
 	cursor: pointer;
-	z-index: 56;
+	z-index: 3;
 	transition: all 0.5s;
 }
 .selectBtnGrey {
@@ -49,7 +49,7 @@
 	backdrop-filter: blur(20px);
 	top: 35px;
 	left: 50px;
-	z-index: 60;
+	z-index: 4;
 }
 .options {
 	list-style: none;
@@ -63,9 +63,8 @@
 
 .option {
 	color: black;
-	font-size: 18px;
+	font-size: 16px;
 	padding: 5px 15px;
-	width: 300px;
 	height: 44px;
 	display: flex;
 	align-items: center;
@@ -76,7 +75,7 @@
 	font-weight: 800;
 	background-color: #ffffffcb;
 	border-radius: 3px;
-	width: 87%;
+	/* width: 87%; */
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .option:first-child {
@@ -93,5 +92,5 @@
 	opacity: 50%;
 	top: -50px;
 	left: -35%;
-	z-index: 5;
+	z-index: 1;
 }

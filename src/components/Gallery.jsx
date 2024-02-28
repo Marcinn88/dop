@@ -33,6 +33,8 @@ export const Gallery = ({ token }) => {
   const [currentPhotoGallery, setCurrentPhotoGallery] = useState([]);
   const [activePhoto, setActivePhoto] = useState(0);
   const [bigPhoto, setBigPhoto] = useState(false);
+  const [galleryDropDown, setGalleryDropDown] = useState(false);
+  const [dropDownModal, setDropdownModal] = useState(false);
 
   const ref = () => {
     window.location.reload(false);
@@ -228,18 +230,34 @@ export const Gallery = ({ token }) => {
 
   const stepUp = () => {
     activePhoto === currentPhotoGallery.length - 1
-      ? setActivePhoto(currentPhotoGallery.length - 1)
-      : setActivePhoto(activePhoto + 1);
+      ? setActivePhoto(0)
+      : // ? setActivePhoto(currentPhotoGallery.length - 1)
+        setActivePhoto(activePhoto + 1);
   };
 
   const stepDown = () => {
-    activePhoto === 0 ? setActivePhoto(0) : setActivePhoto(activePhoto - 1);
+    activePhoto === 0
+      ? setActivePhoto(currentPhotoGallery.length - 1)
+      : setActivePhoto(activePhoto - 1);
+    // activePhoto === 0 ? setActivePhoto(0) : setActivePhoto(activePhoto - 1);
   };
 
   const bigPhotoToggle = () => {
     setBigPhoto(!bigPhoto);
     console.log(activePhoto);
   };
+
+  const closeGalleryDropDown = () => {
+    setGalleryDropDown(false);
+    setDropdownModal(false);
+    console.log("dropdown on/off");
+  };
+
+  const toggleGalleryDropdown = () => {
+    setGalleryDropDown(false);
+    setDropdownModal(!dropDownModal);
+  };
+
   return (
     <>
       {data && <></>}
@@ -449,6 +467,12 @@ export const Gallery = ({ token }) => {
               </div>
 
               <div className={styles.addGalleryPreviewWrapper}>
+                <div
+                  className={dropDownModal && styles.dropDownShadowBox}
+                  onClick={() => {
+                    closeGalleryDropDown();
+                  }}
+                ></div>
                 <div className={styles.addGalleryPreviewTitleWrapper}>
                   {album.album.length > 0 && (
                     <p className={styles.addGalleryPreviewTitle}>
@@ -506,11 +530,27 @@ export const Gallery = ({ token }) => {
                                 className={styles.addGalleryHiddenOverlay}
                               ></div>
                             )}
+                            {/* Lista rozwijana */}
                             <div
                               className={styles.addGalleryImagesPreviewElIco}
                             >
-                              <img src={ico} alt="3 kropki" />
-                              <ul className={styles.dropDownList}>
+                              <img
+                                className={styles.galleryThreeDots}
+                                src={ico}
+                                alt="3 kropki"
+                                onClick={() => {
+                                  setGalleryDropDown(index);
+                                  setDropdownModal(true);
+                                }}
+                              />
+
+                              <ul
+                                className={
+                                  galleryDropDown === index
+                                    ? styles.dropDownList
+                                    : styles.dropDownListHidden
+                                }
+                              >
                                 {hidden ? (
                                   <></>
                                 ) : mainIndex === index.toString() ? (
@@ -523,6 +563,7 @@ export const Gallery = ({ token }) => {
                                         ...album,
                                         main_id: index.toString(),
                                       });
+                                      closeGalleryDropDown();
                                     }}
                                   >
                                     <img src={ico_star} alt="gwiazdka" />
@@ -540,6 +581,7 @@ export const Gallery = ({ token }) => {
                                         index,
                                         album.photos[index].photo
                                       );
+                                      closeGalleryDropDown();
                                     }}
                                   >
                                     <img
@@ -556,6 +598,7 @@ export const Gallery = ({ token }) => {
                                         index,
                                         album.photos[index].photo
                                       );
+                                      closeGalleryDropDown();
                                     }}
                                   >
                                     <img
@@ -573,6 +616,7 @@ export const Gallery = ({ token }) => {
                                           "Nie możesz skasować zdjęcia głównego."
                                         )
                                       : deletePhoto(index);
+                                    closeGalleryDropDown();
                                   }}
                                 >
                                   <img src={ico_del} alt="kosz na śmieci" />
