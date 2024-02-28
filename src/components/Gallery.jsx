@@ -29,8 +29,10 @@ export const Gallery = ({ token }) => {
   const [placeholder, setPlaceholder] = useState("Wybierz album z listy");
   const [delFactor, setDelFactor] = useState(false);
   const [currentGallery, setCurrentGallery] = useState({});
+  const [currentGalleryLength, setCurrentGalleryLength] = useState();
 
   const [currentPhotoGallery, setCurrentPhotoGallery] = useState([]);
+  const [currentMiniGallery, setCurrentMiniGallery] = useState([]);
   const [activePhoto, setActivePhoto] = useState(0);
   const [bigPhoto, setBigPhoto] = useState(false);
   const [galleryDropDown, setGalleryDropDown] = useState(false);
@@ -211,6 +213,8 @@ export const Gallery = ({ token }) => {
     setCurrentGallery(results[0]);
     setCurrentPhotoGallery(results[0].photos);
     setActivePhoto(0);
+    setCurrentGalleryLength(results[0].photos.length);
+    console.log("dlugosc", currentGalleryLength);
   };
 
   const openGalleryWindow = async (id) => {
@@ -219,27 +223,42 @@ export const Gallery = ({ token }) => {
     const filteredResults = results[0].photos.filter(
       (el) => el.hidden === false
     );
-    console.log("results", results);
-    console.log("filteredResults", filteredResults);
     setCurrentGallery(results[0]);
     setCurrentPhotoGallery(filteredResults);
     setActivePhoto(0);
-    console.log("current gallery", currentGallery);
-    console.log("current gallery", currentPhotoGallery);
+    setCurrentGalleryLength(results[0].photos.length);
+    console.log("dlugosc", currentGalleryLength);
   };
 
   const stepUp = () => {
     activePhoto === currentPhotoGallery.length - 1
       ? setActivePhoto(0)
-      : // ? setActivePhoto(currentPhotoGallery.length - 1)
-        setActivePhoto(activePhoto + 1);
+      : setActivePhoto(activePhoto + 1);
+    console.log(currentPhotoGallery);
   };
 
   const stepDown = () => {
     activePhoto === 0
       ? setActivePhoto(currentPhotoGallery.length - 1)
       : setActivePhoto(activePhoto - 1);
-    // activePhoto === 0 ? setActivePhoto(0) : setActivePhoto(activePhoto - 1);
+  };
+
+  const setMiniatureGallery = () => {
+    activePhoto < 2
+      ? setCurrentMiniGallery(currentPhotoGallery.slice(0, 5))
+      : activePhoto < currentPhotoGallery.length - 2
+      ? setCurrentMiniGallery(
+          currentPhotoGallery.slice(activePhoto - 2, activePhoto + 2)
+        )
+      : setCurrentMiniGallery(
+          currentPhotoGallery.slice(
+            currentPhotoGallery.length - 5,
+            currentPhotoGallery.length
+          )
+        );
+    console.log("currentMiniGallery", currentMiniGallery);
+    console.log("photogallery lenght", currentPhotoGallery.length);
+    console.log("active photo", activePhoto);
   };
 
   const bigPhotoToggle = () => {
@@ -251,11 +270,6 @@ export const Gallery = ({ token }) => {
     setGalleryDropDown(false);
     setDropdownModal(false);
     console.log("dropdown on/off");
-  };
-
-  const toggleGalleryDropdown = () => {
-    setGalleryDropDown(false);
-    setDropdownModal(!dropDownModal);
   };
 
   return (
@@ -733,10 +747,20 @@ export const Gallery = ({ token }) => {
               </div>
               <div className={styles.gallerySmallWindowWrapper}>
                 {currentPhotoGallery.map(({ hidden, photo }, index) => {
+                  // activephoto
+                  // index
+                  // currentGalleryLength
                   return (
                     <div
                       className={
-                        activePhoto === index && hidden
+                        (activePhoto < 3 && index > 4) ||
+                        (activePhoto > 2 && index > activePhoto + 2) ||
+                        (activePhoto < currentGalleryLength - 1 &&
+                          index < activePhoto - 3) ||
+                        (activePhoto === currentGalleryLength - 1 &&
+                          index < activePhoto - 4)
+                          ? styles.gallerySmallWindowDisplay
+                          : activePhoto === index && hidden
                           ? styles.gallerySmallActiveWindowHidden
                           : activePhoto !== index && hidden
                           ? styles.gallerySmallWindowHidden
