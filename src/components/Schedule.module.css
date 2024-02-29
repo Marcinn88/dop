@@ -362,10 +362,41 @@
         height: 500px;
         }
 }
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 600px) {
     .eventModalTitle{display: none;}
     .eventMapWrapper{
-        width: 400px;
-        height: 400px;
+        width: 200px;
+        height: 200px;
+        }
+        .eventMarkerCity{
+            font-size: 25px;
+        }
+        .eventMarkerDate{
+            font-size: 15px;
+            top:30px;
+        }
+        .eventTextInput,
+        .eventTextArea,
+        .eventTextDate{
+            padding: 5px;
+        }
+        .eventTextArea{
+            height: 75px;
+        }
+        .newEventModal{
+            min-height: 300px;
+            height: 400px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            padding: 5px;
+            box-sizing: border-box;
+            overflow: scroll;
         }
     }
+
+    @media screen and (max-height: 700px) {
+        .eventModalTitle{display: none;}
+        }
