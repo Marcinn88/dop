@@ -88,7 +88,7 @@ background-color: rgb(221, 221, 221);
     align-items: center;
     font-family: 'Oswald', sans-serif;
     color:#dfdfdfb4;
-    font-size: 20px;
+    font-size: 15px;
     background-color: rgba(255, 255, 255, 0.041);
 }
 
@@ -102,7 +102,7 @@ background-color: rgb(221, 221, 221);
 .footer_lists{
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 10px;
     /* background-color: blue; */
 }
 .footer_list_container{
@@ -140,5 +140,14 @@ background-color: rgb(221, 221, 221);
     .loginModal{
         left:30%;
         width: 40%;
+    }
+
+}
+@media screen and (min-width: 550px) {
+    .footer{
+        font-size: 20px;
+    }
+    .footer_lists{
+        gap: 50px;
     }
 }

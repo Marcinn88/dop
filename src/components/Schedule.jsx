@@ -39,8 +39,153 @@ const tablica = [
 
 export const Schedule = ({ token }) => {
   const [isShown, setIsShown] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [addEventModal, setAddEventModal] = useState(false);
+  const [xValue, setXValue] = useState(50);
+  const [yValue, setYValue] = useState(50);
+  const [event, setEvent] = useState({});
+
+  const ref = () => {
+    window.location.reload(false);
+  };
+
+  const openEventModal = () => {
+    setAddEventModal(true);
+    setXValue(50);
+    setYValue(50);
+    setEvent({
+      city: "",
+      date: "",
+      description: "",
+      cordX: "50",
+      cordY: "50",
+    });
+  };
+  const closeEventModal = () => {
+    setAddEventModal(false);
+  };
+  const logOut = () => {
+    localStorage.setItem("token", JSON.stringify({ token: "" }));
+    setLoggedIn(!loggedIn);
+    ref();
+    console.log("Wylogowano");
+  };
+  const onsubmit = () => {
+    console.log(event);
+    setAddEventModal(false);
+  };
   return (
     <>
+      {token === "admin" ? (
+        <div className={styles.newsAdminPanel}>
+          <button
+            onClick={() => {
+              openEventModal();
+            }}
+            className={styles.addScheduleBtn}
+          >
+            +
+          </button>
+
+          <button
+            onClick={() => {
+              logOut();
+            }}
+            className={styles.loBtn}
+          >
+            Logout
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
+      {addEventModal && (
+        <>
+          <div
+            className={styles.eventShadowbox}
+            onClick={() => {
+              closeEventModal();
+            }}
+          ></div>
+          <div className={styles.newEventModal}>
+            <button
+              className={styles.eventCloseBtn}
+              onClick={() => {
+                closeEventModal();
+              }}
+            >
+              +
+            </button>
+            <p className={styles.eventModalTitle}>Dodaj nowy Event:</p>
+            <div className={styles.eventModalWrapper}>
+              <div className={styles.eventMapWrapper}>
+                <img className={styles.eventMap} src={mapa} alt="Mapa Polski" />
+                <input
+                  onChange={(e) => {
+                    setXValue(e.target.value);
+                    setEvent({ ...event, cordX: e.target.value });
+                  }}
+                  className={styles.mapBarHorizontal}
+                  type="range"
+                />
+                <input
+                  onChange={(e) => {
+                    setYValue(100 - e.target.value);
+                    setEvent({ ...event, cordY: e.target.value });
+                  }}
+                  className={styles.mapBarVertical}
+                  type="range"
+                />
+                <div
+                  style={{ left: xValue + "%", top: yValue + "%" }}
+                  className={styles.eventMarker}
+                >
+                  <div className={styles.eventMarkerCity}>Miasto</div>
+                  <div className={styles.eventMarkerDate}>01.01.2024</div>
+                </div>
+              </div>
+
+              <form
+                onSubmit={() => onsubmit()}
+                className={styles.eventFormWrapper}
+              >
+                <p className={styles.eventTextLabel}>Miasto:</p>
+                <input
+                  required
+                  onChange={(e) => {
+                    setEvent({ ...event, city: e.target.value });
+                  }}
+                  className={styles.eventTextInput}
+                  type="text"
+                  placeholder="Wpisz nazwę miasta"
+                />
+                <p className={styles.eventTextLabel}>Data:</p>
+
+                <input
+                  required
+                  onChange={(e) => {
+                    setEvent({ ...event, date: e.target.value });
+                  }}
+                  className={styles.eventTextDate}
+                  type="date"
+                />
+                <p className={styles.eventTextLabel}>Opis:</p>
+
+                <textarea
+                  onChange={(e) => {
+                    setEvent({ ...event, description: e.target.value });
+                  }}
+                  className={styles.eventTextArea}
+                  placeholder="Napisz którki opis wydarzenia."
+                ></textarea>
+                <button type="Submit" className={styles.eventBtn}>
+                  Zapisz
+                </button>
+              </form>
+            </div>
+          </div>
+        </>
+      )}
       <div className={styles.scheduleWrapper}>
         <Nav selected={"schedule"} token={token} />
         <p className={styles.scheduleTitle}>Harmonogram!</p>
