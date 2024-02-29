@@ -362,3 +362,10 @@
         height: 500px;
         }
 }
+@media screen and (max-height: 800px) {
+    .eventModalTitle{display: none;}
+    .eventMapWrapper{
+        width: 400px;
+        height: 400px;
+        }
+    }
