@@ -326,7 +326,7 @@ export const Gallery = ({ token }) => {
                   <div className={styles.modalAddNewAlbumRight}>
                     <div className={styles.galleryElement}>
                       <img
-                        className={styles.gallerySubTitle}
+                        className={styles.galleryMiniature}
                         src={defaultPhoto}
                         alt="bike"
                       />

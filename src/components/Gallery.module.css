@@ -252,10 +252,13 @@
 }
 .modalAddNewAlbumLeft,
 .modalAddNewAlbumRight{
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.modalAddNewAlbumRight{
+    display: none;
 }
 .modalTitle{
     font-size: 25px;
@@ -720,8 +723,14 @@ color:rgb(172, 172, 172);
         object-fit: contain;
     }
 }
+@media screen and (min-width: 900px) {
+    .modalAddNewAlbumRight{scale: 1;}
+    .modalAddNewAlbumRight{display: flex;width: 50%}
+    .modalAddNewAlbumLeft{width: 50%}
+}
 
 @media screen and (min-width: 1250px) {
+
     .galleryWindowWrapper{
         justify-content: center;
 
