@@ -95,7 +95,7 @@
 .mainNavElTextSelected{
     color:white;
     font-family: 'Oswald', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
 }
 .mainNavElTextSelected{
@@ -160,7 +160,7 @@
     color: #1877F2;
 }
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 840px) {
 .mobileMenuShadowBox,.mobileMenuShadowBoxOff{display: none;}
 .mainNavEl{border: none;}
 .mainNavWrapperMenuMobile,.mainNavWrapperMenuMobileOff{display: none;}

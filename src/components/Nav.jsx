@@ -66,6 +66,15 @@ export const Nav = ({ selected, token }) => {
               </Link>
             </li>
             <li className={styles.mainNavEl}>
+              <Link to="/dop/schedule">
+                {selected === "schedule" ? (
+                  <p className={styles.mainNavElTextSelected}>Harmonogram</p>
+                ) : (
+                  <p className={styles.mainNavElText}>Harmonogram</p>
+                )}
+              </Link>
+            </li>
+            <li className={styles.mainNavEl}>
               <ul className={styles.socialNavMobile}>
                 <li className={styles.socialNavEl}>
                   <a
@@ -150,6 +159,15 @@ export const Nav = ({ selected, token }) => {
                   <p className={styles.mainNavElTextSelected}>Kontakt</p>
                 ) : (
                   <p className={styles.mainNavElText}>Kontakt</p>
+                )}
+              </Link>
+            </li>
+            <li className={styles.mainNavEl}>
+              <Link to="/dop/schedule">
+                {selected === "schedule" ? (
+                  <p className={styles.mainNavElTextSelected}>Harmonogram</p>
+                ) : (
+                  <p className={styles.mainNavElText}>Harmonogram</p>
                 )}
               </Link>
             </li>

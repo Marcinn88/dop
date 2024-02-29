@@ -1,0 +1,26 @@
+.scheduleWrapper{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    color: white;
+    display: flex;
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    /* background-image: url(../images/motor.jpg); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    flex-direction: column;
+
+
+}
+.scheduleTitle{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.scheduleText{
+    margin: 20px 0;
+}

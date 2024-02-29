@@ -89,6 +89,9 @@ export const Footer = ({ token }) => {
               <li className={styles.footer_list_element}>
                 <Link to="/dop/contact">Kontakt</Link>
               </li>
+              <li className={styles.footer_list_element}>
+                <Link to="/dop/schedule">Harmonogram</Link>
+              </li>
             </ul>
           </div>
           <div className={styles.footer_list_container}>

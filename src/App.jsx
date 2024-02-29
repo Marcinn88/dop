@@ -4,6 +4,7 @@ import { Layout } from "./layouts/layout";
 import { About } from "./components/About";
 import { Gallery } from "./components/Gallery";
 import { Contact } from "./components/Contact";
+import { Schedule } from "./components/Schedule";
 
 const App = () => {
   const tokenChecker = () => {
@@ -32,6 +33,10 @@ const App = () => {
         <Route
           path="/dop/contact"
           element={<Contact token={tokenChecker()} />}
+        />
+        <Route
+          path="/dop/schedule"
+          element={<Schedule token={tokenChecker()} />}
         />
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Route>

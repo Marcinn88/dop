@@ -1,18 +1,19 @@
-import { Main } from './Main';
-import { Routes, Route } from 'react-router-dom';
-import { Layout } from 'layouts/layout';
-import { About } from './About';
-import { Gallery } from './Gallery';
-import { Contact } from './Contact';
+import { Main } from "./Main";
+import { Routes, Route } from "react-router-dom";
+import { Layout } from "layouts/layout";
+import { About } from "./About";
+import { Gallery } from "./Gallery";
+import { Contact } from "./Contact";
+import { Schedule } from "./Schedule";
 export const App = () => {
   const tokenChecker = () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const parsedToken = JSON.parse(token).token;
       return parsedToken;
     } catch (error) {
-      localStorage.setItem('token', JSON.stringify({ token: '' }));
-      const token = localStorage.getItem('token');
+      localStorage.setItem("token", JSON.stringify({ token: "" }));
+      const token = localStorage.getItem("token");
       const parsedToken = JSON.parse(token).token;
       return parsedToken;
     }
@@ -33,6 +34,10 @@ export const App = () => {
         <Route
           path="/dop-bike/contact"
           element={<Contact token={tokenChecker()} />}
+        />
+        <Route
+          path="/dop-bike/schedule"
+          element={<Schedule token={tokenChecker()} />}
         />
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Route>
