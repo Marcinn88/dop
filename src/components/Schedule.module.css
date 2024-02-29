@@ -13,9 +13,8 @@
     background-size: cover;
     min-height: 100vh;
     flex-direction: column;
-
-
 }
+
 .scheduleTitle{
     font-size: 30px;
     font-weight: bold;
@@ -23,4 +22,137 @@
 }
 .scheduleText{
     margin: 20px 0;
+}
+.mainWrapper{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Oswald', sans-serif;
+    min-height: 500px;
+    background-color: rgba(97, 97, 97, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mapWrapper,
+.eventWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    
+}
+.mapWrapper{
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+.map{
+    position:relative;
+    width: 100%;
+    height: auto;
+}
+
+.eventTitle{
+    font-size: 40px;
+    margin: 5px;
+}
+.eventListWrapper{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.eventElement{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    border: solid 1px rgb(24, 24, 24);
+    cursor: pointer;
+}
+.eventTitleWrapper{
+    display: flex;
+    align-items: baseline;    
+    gap: 20px;
+    padding: 0;
+    position: relative;
+}
+.eventCity{
+    font-size: 25px;
+    padding: 0;
+    margin: 5px;
+    letter-spacing:5px;
+}
+.eventDate{
+    position: absolute;
+    top:-5px;
+    left:-10px;
+    font-size: 16px;
+    color:rgb(167, 29, 29);
+    padding: 0;
+    margin: 0;
+}
+.eventDescribe{
+    padding:  0 25px;
+    margin-top: 0;
+    color: #a7a7a7;
+
+}
+.eventMarker{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    z-index: 2;
+}
+.eventMarkerCity{
+    position: absolute;
+    font-size: 35px;
+    top:-5px;
+    left:25px;
+    border-radius: 50%;
+    z-index: 2;
+}
+.eventMarkerDate{
+    position: absolute;
+    font-size: 20px;
+    top:35px;
+    left:25px;
+    border-radius: 50%;
+    color:red;
+    z-index: 2;
+}
+
+@media screen and (min-width:650px){
+    .map{
+        position:relative;
+        width: 80%;
+        height: auto;
+    }
+}
+@media screen and (min-width:900px){
+    .map{
+        width: 60%;
+    }
+}
+@media screen and (min-width: 1100px) {
+    .map{width: 100%;}
+    .mainWrapper{
+        flex-direction: row;
+        align-items:normal;
+    }
+    .mapWrapper{
+        height: 100%;
+    }
+    .eventCity{
+        font-size: 35px;
+    }
+    .eventTitle{
+        font-size: 50px;
+    }
 }
