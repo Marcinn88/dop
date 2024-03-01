@@ -141,7 +141,7 @@ export const Schedule = ({ token }) => {
                   className={styles.eventMarker}
                 >
                   <div className={styles.eventMarkerCity}>Miasto</div>
-                  <div className={styles.eventMarkerDate}>01.01.2024</div>
+                  <div className={styles.eventMarkerDate}>01.01.2099</div>
                 </div>
               </div>
 
@@ -225,6 +225,8 @@ export const Schedule = ({ token }) => {
                     <span className={styles.eventTitleWrapper}>
                       <p className={styles.eventDate}>{date}</p>
                       <p className={styles.eventCity}>{city}</p>
+                      <button>Edytuj</button>
+                      <button>Usuń</button>
                     </span>
                     <p className={styles.eventDescribe}>{description}</p>
                   </li>

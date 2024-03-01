@@ -44,6 +44,7 @@
     flex-direction: column;
     gap:5px;
     list-style: none;
+    z-index: 2;
 }
 .mainNavWrapperMenuMobileOff{
     position: absolute;
