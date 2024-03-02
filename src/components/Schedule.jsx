@@ -207,8 +207,8 @@ export const Schedule = ({ token }) => {
                     {editModal ? event.city : "Miasto"}
                   </div>
                   <div className={styles.eventMarkerDate}>
-                    {`x: ${xValue}, y: ${yValue}`}
-                    {/* {editModal ? event.date : "01.01.2099"} */}
+                    {/* {`x: ${xValue}, y: ${yValue}`} */}
+                    {editModal ? event.date : "01.01.2099"}
                   </div>
                 </div>
               </div>
