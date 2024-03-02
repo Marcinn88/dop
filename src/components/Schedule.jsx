@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const tablica = [
   {
+    sort_date: "1708843494",
     city: "Kraków",
     date: "25.02.2024",
     description: "Jazda na motorach połączona z oglądaniem filmów.",
@@ -12,14 +13,16 @@ const tablica = [
     cordY: "83",
   },
   {
+    sort_date: "1716615894",
     city: "Warszawa",
-    date: "13.03.2024",
+    date: "25.05.2024",
     description:
       "Wspólne zbieranie grzybów w akompaniamęcie największych religijnych hitów VIII wieku.",
     cordX: "64",
     cordY: "42",
   },
   {
+    sort_date: "1710744294",
     city: "Płock",
     date: "18.03.2024",
     description:
@@ -28,6 +31,7 @@ const tablica = [
     cordY: "40",
   },
   {
+    sort_date: "1713505494",
     city: "Gdańsk",
     date: "19.04.2024",
     description:
@@ -35,7 +39,7 @@ const tablica = [
     cordX: "44",
     cordY: "7",
   },
-];
+].sort((a, b) => a.sort_date - b.sort_date);
 
 export const Schedule = ({ token }) => {
   const [isShown, setIsShown] = useState(false);
@@ -54,6 +58,7 @@ export const Schedule = ({ token }) => {
     setXValue(50);
     setYValue(50);
     setEvent({
+      sort_date: Date.now(),
       city: "",
       date: "",
       description: "",
@@ -70,9 +75,11 @@ export const Schedule = ({ token }) => {
     ref();
     console.log("Wylogowano");
   };
-  const onsubmit = () => {
+
+  const onsubmit = (e) => {
+    e.preventDefault();
     console.log(event);
-    setAddEventModal(false);
+    // setAddEventModal(false);
   };
   return (
     <>
@@ -145,10 +152,7 @@ export const Schedule = ({ token }) => {
                 </div>
               </div>
 
-              <form
-                onSubmit={() => onsubmit()}
-                className={styles.eventFormWrapper}
-              >
+              <form onSubmit={onsubmit} className={styles.eventFormWrapper}>
                 <p className={styles.eventTextLabel}>Miasto:</p>
                 <input
                   required
@@ -164,7 +168,15 @@ export const Schedule = ({ token }) => {
                 <input
                   required
                   onChange={(e) => {
-                    setEvent({ ...event, date: e.target.value });
+                    setEvent({
+                      ...event,
+                      date: e.target.value,
+                      sort_date: Date.UTC(
+                        new Date(e.target.value).getFullYear(),
+                        new Date(e.target.value).getMonth(),
+                        new Date(e.target.value).getDate()
+                      ),
+                    });
                   }}
                   className={styles.eventTextDate}
                   type="date"
@@ -199,7 +211,7 @@ export const Schedule = ({ token }) => {
               return (
                 <div
                   style={{ left: cordX + "%", top: cordY + "%" }}
-                  className={styles.eventMarker}
+                  className={styles.eventMarkerWrapper}
                 >
                   {isShown === index && (
                     <>
@@ -207,6 +219,8 @@ export const Schedule = ({ token }) => {
                       <div className={styles.eventMarkerDate}>{date}</div>
                     </>
                   )}
+
+                  <div className={styles.eventMarker}></div>
                 </div>
               );
             })}

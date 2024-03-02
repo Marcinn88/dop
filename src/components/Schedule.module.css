@@ -271,11 +271,15 @@
     color: #a7a7a7;
 
 }
+.eventMarkerWrapper{
+    position: absolute;
+
+}
 .eventMarker{
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     border-radius: 50%;
     z-index: 2;
 }
@@ -284,9 +288,9 @@
     font-size: 25px;
     top:-5px;
     left:25px;
-    border-radius: 50%;
-    z-index: 2;
+    z-index: 5;
     pointer-events: none;
+    color:white;
 }
 .eventMarkerDate{
     position: absolute;
@@ -295,7 +299,7 @@
     left:25px;
     border-radius: 50%;
     color:red;
-    z-index: 2;
+    z-index: 5;
     pointer-events: none;
 }
 @media screen and (min-width:450px){
@@ -395,8 +399,8 @@
             box-sizing: border-box;
             overflow: scroll;
         }
-    }
+}
 
-    @media screen and (max-height: 700px) {
-        .eventModalTitle{display: none;}
-        }
+@media screen and (max-height: 700px) {
+    .eventModalTitle{display: none;}
+}
