@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = "";
 
 export const getArticles = async () => {
   try {
     const response = await axios.get(
-      'https://65b15d5ed16d31d11bdec7f4.mockapi.io/articles'
+      "https://65b15d5ed16d31d11bdec7f4.mockapi.io/articles"
     );
     const responseData = response.data;
     console.log(responseData);
@@ -15,10 +15,10 @@ export const getArticles = async () => {
   }
 };
 
-export const addArticle = async article => {
+export const addArticle = async (article) => {
   try {
     const response = await axios.post(
-      'https://65b15d5ed16d31d11bdec7f4.mockapi.io/articles',
+      "https://65b15d5ed16d31d11bdec7f4.mockapi.io/articles",
       article
     );
     return response.data;
@@ -27,7 +27,7 @@ export const addArticle = async article => {
   }
 };
 
-export const deleteArticle = async articleId => {
+export const deleteArticle = async (articleId) => {
   try {
     const response = await axios.delete(
       `https://65b15d5ed16d31d11bdec7f4.mockapi.io/articles/${articleId}`
@@ -61,10 +61,10 @@ export const editArticle = async (data, id) => {
   }
 };
 
-export const sendComment = async comment => {
+export const sendComment = async (comment) => {
   try {
     const response = await axios.post(
-      'https://65d39f84522627d501094a90.mockapi.io/comments',
+      "https://65d39f84522627d501094a90.mockapi.io/comments",
       comment
     );
     return response.data;
@@ -73,7 +73,7 @@ export const sendComment = async comment => {
   }
 };
 
-export const deleteComment = async commentId => {
+export const deleteComment = async (commentId) => {
   try {
     const response = await axios.delete(
       `https://65d39f84522627d501094a90.mockapi.io/comments/${commentId}`
@@ -84,7 +84,7 @@ export const deleteComment = async commentId => {
   }
 };
 
-export const showComment = async id => {
+export const showComment = async (id) => {
   try {
     const response = await axios.put(
       `https://65d39f84522627d501094a90.mockapi.io/comments/${id}`,
@@ -97,7 +97,7 @@ export const showComment = async id => {
     return console.error(error.message);
   }
 };
-export const hideComment = async id => {
+export const hideComment = async (id) => {
   try {
     const response = await axios.put(
       `https://65d39f84522627d501094a90.mockapi.io/comments/${id}`,
@@ -111,10 +111,10 @@ export const hideComment = async id => {
   }
 };
 
-export const addAlbum = async album => {
+export const addAlbum = async (album) => {
   try {
     const response = await axios.post(
-      'https://65d784e727d9a3bc1d7b3c59.mockapi.io/gallery',
+      "https://65d784e727d9a3bc1d7b3c59.mockapi.io/gallery",
       album
     );
     return response.data;
@@ -141,10 +141,45 @@ export const saveAlbum = async (data, id) => {
   }
 };
 
-export const deleteAlbum = async albumId => {
+export const deleteAlbum = async (albumId) => {
   try {
     const response = await axios.delete(
       `https://65d784e727d9a3bc1d7b3c59.mockapi.io/gallery/${albumId}`
+    );
+    return response.data;
+  } catch (error) {
+    return console.error(error.message);
+  }
+};
+
+export const addEvent = async (event) => {
+  try {
+    const response = await axios.post(
+      "https://65b15d5ed16d31d11bdec7f4.mockapi.io/events",
+      event
+    );
+    return response.data;
+  } catch (error) {
+    return console.error(error.message);
+  }
+};
+
+export const deleteEvent = async (eventId) => {
+  try {
+    const response = await axios.delete(
+      `https://65b15d5ed16d31d11bdec7f4.mockapi.io/events/${eventId}`
+    );
+    return response.data;
+  } catch (error) {
+    return console.error(error.message);
+  }
+};
+
+export const editEvent = async (data, id) => {
+  try {
+    const response = await axios.put(
+      `https://65b15d5ed16d31d11bdec7f4.mockapi.io/events/${id}`,
+      data
     );
     return response.data;
   } catch (error) {

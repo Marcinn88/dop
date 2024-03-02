@@ -226,7 +226,7 @@
 }
 
 .eventTitle{
-    font-size: 40px;
+    font-size: 25px;
     margin: 5px;
 }
 .eventListWrapper{
@@ -295,6 +295,7 @@
 .eventMarkerDate{
     position: absolute;
     font-size: 15px;
+    width: 200px;
     top:30px;
     left:25px;
     border-radius: 50%;
@@ -320,6 +321,9 @@
         .eventMarkerDate{
             font-size: 20px;
             top:35px;
+        }
+        .eventTitle{
+            font-size: 40px;
         }
 }
 @media screen and (min-width:650px){
