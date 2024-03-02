@@ -6,43 +6,36 @@ import axios from "axios";
 import { addEvent, deleteEvent, editEvent } from "../services/operations";
 import { nanoid } from "nanoid";
 
-const tablica = [
-  {
-    sort_date: "1708843494",
-    city: "Kraków",
-    date: "25.02.2024",
-    description: "Jazda na motorach połączona z oglądaniem filmów.",
-    cordX: "57",
-    cordY: "83",
-  },
-  {
-    sort_date: "1716615894",
-    city: "Warszawa",
-    date: "25.05.2024",
-    description:
-      "Wspólne zbieranie grzybów w akompaniamęcie największych religijnych hitów VIII wieku.",
-    cordX: "64",
-    cordY: "42",
-  },
-  {
-    sort_date: "1710744294",
-    city: "Płock",
-    date: "18.03.2024",
-    description:
-      "Krótka 8 godzinna pogadanka na temat ekologii. Ekologiczne paliwa do palenia gumy oraz jak dymić aby nie ocieplać klimatu.",
-    cordX: "55",
-    cordY: "40",
-  },
-  {
-    sort_date: "1713505494",
-    city: "Gdańsk",
-    date: "19.04.2024",
-    description:
-      "Tu będzie jeździł ktoś inny, nawet go nie znam. Ciekawe czy się zorientujecie.",
-    cordX: "44",
-    cordY: "7",
-  },
-].sort((a, b) => a.sort_date - b.sort_date);
+const cityHelper = [
+  { city: "Płock", cordX: "100", cordY: "100" },
+  { city: "Świnoujście", cordX: "4", cordY: "14" },
+  { city: "Szczecin", cordX: "6", cordY: "22" },
+  { city: "Kołobrzeg", cordX: "16", cordY: "10" },
+  { city: "Koszalin", cordX: "22", cordY: "11" },
+  { city: "Władysławowo", cordX: "44", cordY: "2" },
+  { city: "Gdańsk", cordX: "45", cordY: "9" },
+  { city: "Olsztyn", cordX: "62", cordY: "19" },
+  { city: "Suwałki", cordX: "85", cordY: "13" },
+  { city: "Białystok", cordX: "87", cordY: "31" },
+  { city: "Bydgoszcz", cordX: "39", cordY: "30" },
+  { city: "Gorzów Wielkopolski", cordX: "11", cordY: "34" },
+  { city: "Zielona Góra", cordX: "13", cordY: "48" },
+  { city: "Poznań", cordX: "28", cordY: "41" },
+  { city: "Łódź", cordX: "51", cordY: "52" },
+  { city: "Warszawa", cordX: "66", cordY: "44" },
+  { city: "Radom", cordX: "67", cordY: "59" },
+  { city: "Lublin", cordX: "83", cordY: "62" },
+  { city: "Zamość", cordX: "90", cordY: "71" },
+  { city: "Rzeszów", cordX: "76", cordY: "82" },
+  { city: "Przemyśl", cordX: "83", cordY: "87" },
+  { city: "Kielce", cordX: "62", cordY: "68" },
+  { city: "Kraków", cordX: "54", cordY: "82" },
+  { city: "Częstochowa", cordX: "48", cordY: "69" },
+  { city: "Katowice", cordX: "47", cordY: "77" },
+  { city: "Bielsko-Biała", cordX: "47", cordY: "83" },
+  { city: "Wrocław", cordX: "28", cordY: "62" },
+  { city: "Zakopane", cordX: "55", cordY: "93" },
+];
 
 export const Schedule = ({ token }) => {
   const [data, setData] = useState([]);
@@ -214,7 +207,8 @@ export const Schedule = ({ token }) => {
                     {editModal ? event.city : "Miasto"}
                   </div>
                   <div className={styles.eventMarkerDate}>
-                    {editModal ? event.date : "01.01.2099"}
+                    {`x: ${xValue}, y: ${yValue}`}
+                    {/* {editModal ? event.date : "01.01.2099"} */}
                   </div>
                 </div>
               </div>
