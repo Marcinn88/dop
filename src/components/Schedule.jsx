@@ -7,34 +7,35 @@ import { addEvent, deleteEvent, editEvent } from "../services/operations";
 import { nanoid } from "nanoid";
 
 const cityHelper = [
-  { city: "Płock", cordX: "100", cordY: "100" },
-  { city: "Świnoujście", cordX: "4", cordY: "14" },
-  { city: "Szczecin", cordX: "6", cordY: "22" },
-  { city: "Kołobrzeg", cordX: "16", cordY: "10" },
-  { city: "Koszalin", cordX: "22", cordY: "11" },
-  { city: "Władysławowo", cordX: "44", cordY: "2" },
-  { city: "Gdańsk", cordX: "45", cordY: "9" },
-  { city: "Olsztyn", cordX: "62", cordY: "19" },
-  { city: "Suwałki", cordX: "85", cordY: "13" },
-  { city: "Białystok", cordX: "87", cordY: "31" },
-  { city: "Bydgoszcz", cordX: "39", cordY: "30" },
-  { city: "Gorzów Wielkopolski", cordX: "11", cordY: "34" },
-  { city: "Zielona Góra", cordX: "13", cordY: "48" },
-  { city: "Poznań", cordX: "28", cordY: "41" },
-  { city: "Łódź", cordX: "51", cordY: "52" },
-  { city: "Warszawa", cordX: "66", cordY: "44" },
-  { city: "Radom", cordX: "67", cordY: "59" },
-  { city: "Lublin", cordX: "83", cordY: "62" },
-  { city: "Zamość", cordX: "90", cordY: "71" },
-  { city: "Rzeszów", cordX: "76", cordY: "82" },
-  { city: "Przemyśl", cordX: "83", cordY: "87" },
-  { city: "Kielce", cordX: "62", cordY: "68" },
-  { city: "Kraków", cordX: "54", cordY: "82" },
-  { city: "Częstochowa", cordX: "48", cordY: "69" },
-  { city: "Katowice", cordX: "47", cordY: "77" },
-  { city: "Bielsko-Biała", cordX: "47", cordY: "83" },
-  { city: "Wrocław", cordX: "28", cordY: "62" },
-  { city: "Zakopane", cordX: "55", cordY: "93" },
+  { city: "Płock", cordX: "55", cordY: "35", position: "right" },
+  { city: "Świnoujście", cordX: "4", cordY: "14", position: "left" },
+  { city: "Toruń", cordX: "45", cordY: "32", position: "right" },
+  { city: "Szczecin", cordX: "6", cordY: "22", position: "right" },
+  { city: "Kołobrzeg", cordX: "16", cordY: "10", position: "left" },
+  { city: "Koszalin", cordX: "22", cordY: "11", position: "right" },
+  { city: "Władysławowo", cordX: "44", cordY: "2", position: "right" },
+  { city: "Gdańsk", cordX: "45", cordY: "9", position: "right" },
+  { city: "Olsztyn", cordX: "62", cordY: "19", position: "right" },
+  { city: "Suwałki", cordX: "85", cordY: "13", position: "right" },
+  { city: "Białystok", cordX: "87", cordY: "31", position: "right" },
+  { city: "Bydgoszcz", cordX: "39", cordY: "30", position: "left" },
+  { city: "Gorzów Wielkopolski", cordX: "11", cordY: "34", position: "left" },
+  { city: "Zielona Góra", cordX: "13", cordY: "48", position: "right" },
+  { city: "Poznań", cordX: "28", cordY: "41", position: "right" },
+  { city: "Łódź", cordX: "51", cordY: "52", position: "right" },
+  { city: "Warszawa", cordX: "66", cordY: "44", position: "right" },
+  { city: "Radom", cordX: "67", cordY: "59", position: "right" },
+  { city: "Lublin", cordX: "83", cordY: "62", position: "right" },
+  { city: "Zamość", cordX: "90", cordY: "71", position: "right" },
+  { city: "Rzeszów", cordX: "76", cordY: "82", position: "right" },
+  { city: "Przemyśl", cordX: "83", cordY: "87", position: "right" },
+  { city: "Kielce", cordX: "62", cordY: "68", position: "right" },
+  { city: "Kraków", cordX: "54", cordY: "82", position: "right" },
+  { city: "Częstochowa", cordX: "48", cordY: "69", position: "left" },
+  { city: "Katowice", cordX: "47", cordY: "77", position: "left" },
+  { city: "Bielsko-Biała", cordX: "47", cordY: "83", position: "left" },
+  { city: "Wrocław", cordX: "28", cordY: "62", position: "right" },
+  { city: "Zakopane", cordX: "55", cordY: "93", position: "right" },
 ];
 
 export const Schedule = ({ token }) => {
@@ -175,7 +176,26 @@ export const Schedule = ({ token }) => {
             <div className={styles.eventModalWrapper}>
               <div className={styles.eventMapWrapper}>
                 <img className={styles.eventMap} src={mapa} alt="Mapa Polski" />
-
+                {cityHelper.map(({ city, cordX, cordY, position }) => {
+                  return (
+                    <div
+                      style={{ left: cordX + "%", top: cordY + "%" }}
+                      className={styles.eventCityHelper}
+                    >
+                      <span className={styles.eventCityHelperMarker}></span>
+                      <span
+                        style={
+                          position === "right"
+                            ? { left: 15 + "px" }
+                            : { left: -40 + "px" }
+                        }
+                        className={styles.eventCityHelperName}
+                      >
+                        {city}
+                      </span>
+                    </div>
+                  );
+                })}
                 <input
                   value={editModal ? event.cordX : xValue}
                   onChange={(e) => {
@@ -351,20 +371,29 @@ export const Schedule = ({ token }) => {
                       <span className={styles.eventTitleWrapper}>
                         <p className={styles.eventDate}>{date}</p>
                         <p className={styles.eventCity}>{city}</p>
-                        <button
-                          onClick={() => {
-                            onEdit(id);
-                          }}
-                        >
-                          Edytuj
-                        </button>
-                        <button
-                          onClick={() => {
-                            onDelete(id);
-                          }}
-                        >
-                          Usuń
-                        </button>
+                        {token === "admin" ? (
+                          <>
+                            {" "}
+                            <button
+                              onClick={() => {
+                                onEdit(id);
+                              }}
+                              className={styles.Btn}
+                            >
+                              Edytuj
+                            </button>
+                            <button
+                              onClick={() => {
+                                onDelete(id);
+                              }}
+                              className={styles.Btn}
+                            >
+                              Usuń
+                            </button>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </span>
                       <p className={styles.eventDescribe}>{description}</p>
                     </li>
@@ -372,6 +401,9 @@ export const Schedule = ({ token }) => {
                 })}
             </ul>
           </section>
+        </div>
+        <div className={styles.mainMoreWrapper}>
+          <p className={styles.moreWrapperTitle}>Kolejne wydarzenia:</p>
         </div>
       </div>
     </>
