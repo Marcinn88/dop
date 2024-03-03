@@ -10,7 +10,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 }
+
+
 /* Tytuł */
 .mainTitle{
     color:white;
@@ -21,6 +24,7 @@
     bottom: 300px;
     cursor: default;
     margin: 0;
+    transition: .5s;
 }
 /* Podtytuł */
 .subTitle{
@@ -32,6 +36,7 @@
     bottom: 250px;
     cursor: default;
     margin: 0;
+    transition: .5s;
 }
 
 
