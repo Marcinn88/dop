@@ -102,12 +102,15 @@ export const Header = ({ token }) => {
 
       <div className={styles.main} id={nanoid()}>
         <Nav selected={"news"} token={token} />
-        <div className={styles.mainTitle}>DOP</div>
-        <div className={styles.subTitle}>Maciej Bielicki</div>
-
-        <button onClick={openModal} className={styles.mainButton}>
-          Newsletter
-        </button>
+        {/* Wariant - Newsletter START*/}
+        <div className={styles.mainNewsletter}>
+          <div className={styles.mainTitle}>DOP</div>
+          <div className={styles.subTitle}>Maciej Bielicki</div>
+          <button onClick={openModal} className={styles.mainButton}>
+            Newsletter
+          </button>
+        </div>
+        {/* Wariant - Newsletter KONIEC*/}
       </div>
     </>
   );
